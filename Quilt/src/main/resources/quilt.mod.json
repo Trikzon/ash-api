@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "com.diontryban.mods",
+    "id": "examplemod",
+    "version": "${version}",
+    "metadata": {
+      "name": "Example Mod",
+      "description": "A short description of your mod.",
+      "contributors": {
+        "Trikzon": "Owner"
+      },
+      "contact": {
+        "homepage": "https://github.com/Trikzon",
+        "issues": "https://github.com/Trikzon/examplemod/issues",
+        "sources": "https://github.com/Trikzon/examplemod"
+      },
+      "icon": "assets/examplemod/icon.png",
+      "license": "LGPL-3.0-or-later"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "com.diontryban.mods.example.quilt.ExampleModQuilt"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.17.6-"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=5.0.0-"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.19.3"
+      }
+    ]
+  },
+  "mixin": [
+    "examplemod.mixins.json",
+    "examplemod.quilt.mixins.json"
+  ]
+}

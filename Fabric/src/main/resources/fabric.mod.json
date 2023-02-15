@@ -1,0 +1,38 @@
+{
+    "schemaVersion": 1,
+    "id": "examplemod",
+    "version": "${version}",
+  
+    "name": "Example Mod",
+    "description": "This is an example description! Tell everyone what your mod is about!",
+    "authors": [
+      "Trikzon"
+    ],
+    "contact": {
+      "homepage": "https://github.com/Trikzon",
+      "sources": "https://github.com/Trikzon/examplemod"
+    },
+  
+    "license": "LGPL-3.0-or-later",
+    "icon": "assets/examplemod/icon.png",
+  
+    "environment": "*",
+    "entrypoints": {
+      "main": [
+        "com.diontryban.mods.example.fabric.ExampleModFabric"
+      ]
+    },
+    "mixins": [
+      "examplemod.mixins.json",
+      "examplemod.fabric.mixins.json"
+    ],
+  
+    "depends": {
+      "fabric": "*",
+      "minecraft": "1.19.3",
+      "java": ">=17"
+    },
+    "suggests": {
+    }
+  }
+  

@@ -1,30 +1,29 @@
 {
     "schemaVersion": 1,
-    "id": "examplemod",
+    "id": "ash",
     "version": "${version}",
   
-    "name": "Example Mod",
-    "description": "This is an example description! Tell everyone what your mod is about!",
+    "name": "Ash",
+    "description": "An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).",
     "authors": [
       "Trikzon"
     ],
     "contact": {
-      "homepage": "https://github.com/Trikzon",
-      "sources": "https://github.com/Trikzon/examplemod"
+      "homepage": "https://github.com/Trikzon/ash",
+      "sources": "https://github.com/Trikzon/ash"
     },
   
     "license": "LGPL-3.0-or-later",
-    "icon": "assets/examplemod/icon.png",
+    "icon": "assets/ash/icon.png",
   
     "environment": "*",
     "entrypoints": {
       "main": [
-        "com.diontryban.mods.example.fabric.ExampleModFabric"
       ]
     },
     "mixins": [
-      "examplemod.mixins.json",
-      "examplemod.fabric.mixins.json"
+        "ash.mixins.json",
+        "ash.fabric.mixins.json"
     ],
   
     "depends": {
@@ -33,6 +32,12 @@
       "java": ">=17"
     },
     "suggests": {
+    },
+
+    "custom": {
+        "modmenu": {
+            "badges": [ "library" ]
+        }
     }
   }
   

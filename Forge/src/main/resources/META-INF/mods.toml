@@ -1,26 +1,22 @@
 modLoader="javafml" #mandatory
 loaderVersion="[44,)" #mandatory
 license="LGPL-3.0-or-later"
-issueTrackerURL="https://github.com/trikzon/examplemod/issues" #optional
+issueTrackerURL="https://github.com/trikzon/ash/issues" #optional
 
 [[mods]] #mandatory
-modId="examplemod" #mandatory
+modId="ash" #mandatory
 version="${file.jarVersion}" #mandatory
-displayName="Example Mod" #mandatory
+displayName="Ash" #mandatory
 #updateJSONURL="" #optional
-displayURL="https://github.com/trikzon/examplemod" #optional
-logoFile="assets/examplemod/icon.png" #optional
+displayURL="https://github.com/trikzon/ash" #optional
+logoFile="assets/ash/icon.png" #optional
 #credits="" #optional
 authors="Trikzon" #optional
 description='''
-This is a long form description of the mod. You can write whatever you want here
-
-Have some lorem ipsum.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sagittis luctus odio eu tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque volutpat ligula eget lacus auctor sagittis. In hac habitasse platea dictumst. Nunc gravida elit vitae sem vehicula efficitur. Donec mattis ipsum et arcu lobortis, eleifend sagittis sem rutrum. Cras pharetra quam eget posuere fermentum. Sed id tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).
 '''
 
-[[dependencies.examplemod]] #optional
+[[dependencies.ash]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
     versionRange="[44,)" #mandatory
@@ -29,7 +25,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.ash]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.19.3,1.20)"

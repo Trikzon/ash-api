@@ -1,9 +1,14 @@
-# Mod Name
+# Ash
+TODO: Change the badges.
 [![](http://cf.way2muchnoise.eu/full_360916_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/shuffle)
 [![](https://modrinth-utils.vercel.app/api/badge/downloads/?id=shuffle&logo=true)](https://www.modrinth.com/mod/shuffle)
 [![](http://cf.way2muchnoise.eu/versions/360916.svg)](https://www.curseforge.com/minecraft/mc-mods/shuffle)
 
-This is an example mod description. It should be a few sentences long. Just like this.
+An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt). It is meant to be used with a multi-loader development environment such as Jared's [MultiLoader-Template](https://github.com/jaredlll08/MultiLoader-Template).
+
+Documentation will be available in the near future.
+
+Pull requests are highly appreciated. However, please discuss the in my [Discord](https://discord.gg/aqXkvbJ) first and while developing them.
 
 ---
 

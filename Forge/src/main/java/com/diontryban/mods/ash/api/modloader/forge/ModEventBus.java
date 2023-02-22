@@ -17,7 +17,7 @@
  * along with Ash. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.diontryban.mods.ash.api.forge;
+package com.diontryban.mods.ash.api.modloader.forge;
 
 import net.minecraftforge.eventbus.api.IEventBus;
 

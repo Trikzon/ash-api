@@ -20,7 +20,7 @@
 package com.diontryban.mods.ash.impl.client.input;
 
 import com.diontryban.mods.ash.api.client.input.KeyMappingRegistry;
-import com.diontryban.mods.ash.api.forge.ModEventBus;
+import com.diontryban.mods.ash.api.modloader.forge.ModEventBus;
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 

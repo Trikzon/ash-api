@@ -1,4 +1,7 @@
 # Changelog
+## 0.1.4
+- Add mod icon
+
 ## 0.1.3
 - Add `ResourceLoader` API to allow registering resource reload listeners.
   - Note: It has not been tested for server-side resource reload listeners, but it should work.

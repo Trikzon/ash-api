@@ -5,7 +5,7 @@
     "id": "ash",
     "version": "${version}",
     "metadata": {
-      "name": "Ash",
+      "name": "Ash API",
       "description": "An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).",
       "contributors": {
         "Trikzon": "Owner"

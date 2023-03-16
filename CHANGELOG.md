@@ -1,4 +1,7 @@
 # Changelog
+## 0.1.6
+- Rename Ash to Ash API
+
 ## 0.1.4
 - Add mod icon
 

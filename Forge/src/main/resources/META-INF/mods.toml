@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/trikzon/ash/issues" #optional
 [[mods]] #mandatory
 modId="ash" #mandatory
 version="${file.jarVersion}" #mandatory
-displayName="Ash" #mandatory
+displayName="Ash API" #mandatory
 #updateJSONURL="" #optional
 displayURL="https://github.com/trikzon/ash" #optional
 logoFile="assets/ash/icon.png" #optional

@@ -27,5 +27,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'Ash'
+rootProject.name = 'Ash API'
 include('Common', 'Fabric', 'Forge', 'Quilt')

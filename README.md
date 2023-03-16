@@ -1,5 +1,4 @@
 # Ash API
-TODO: Change the badges.
 [![](http://cf.way2muchnoise.eu/full_838498_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/ash-api)
 [![](https://img.shields.io/modrinth/dt/ash-api?logo=modrinth&style=flat)](https://www.modrinth.com/mod/ash-api)
 [![](http://cf.way2muchnoise.eu/versions/838498.svg)](https://www.curseforge.com/minecraft/mc-mods/ash-api)

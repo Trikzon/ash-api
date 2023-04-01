@@ -1,4 +1,7 @@
 # Changelog
+## 0.4.0
+- Move to package `com.diontryban` from `com.diontryban.mods`
+
 ## 0.3.2
 - Remove `ModEventBus` API on Forge
 - Add `ForgeModLoader` API on Forge

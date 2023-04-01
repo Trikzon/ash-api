@@ -19,7 +19,7 @@
     "environment": "*",
     "entrypoints": {
       "modmenu": [
-          "com.diontryban.mods.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
+          "com.diontryban.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
       ]
     },
     "mixins": [
@@ -29,10 +29,11 @@
   
     "depends": {
       "fabric": "*",
-      "minecraft": "1.19.3",
+      "minecraft": ">=1.19.3",
       "java": ">=17"
     },
     "suggests": {
+        "modmenu": "*"
     },
 
     "custom": {

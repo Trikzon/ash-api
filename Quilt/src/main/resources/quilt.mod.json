@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "quilt_loader": {
-    "group": "com.diontryban.mods",
+    "group": "com.diontryban.ash",
     "id": "ash",
     "version": "${version}",
     "metadata": {
@@ -20,7 +20,7 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
-      "modmenu": "com.diontryban.mods.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
+      "modmenu": "com.diontryban.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
     },
     "depends": [
       {
@@ -34,6 +34,11 @@
       {
         "id": "minecraft",
         "versions": ">=1.19.3"
+      }
+    ],
+    "suggests": [
+      {
+        "id": "modmenu"
       }
     ]
   },

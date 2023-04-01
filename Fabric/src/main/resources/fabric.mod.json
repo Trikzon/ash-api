@@ -18,7 +18,8 @@
   
     "environment": "*",
     "entrypoints": {
-      "main": [
+      "modmenu": [
+          "com.diontryban.mods.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
       ]
     },
     "mixins": [

@@ -20,7 +20,7 @@
 package com.diontryban.mods.ash.impl.client.input;
 
 import com.diontryban.mods.ash.api.client.input.KeyMappingRegistry;
-import com.diontryban.mods.ash.api.modloader.forge.ModEventBus;
+import com.diontryban.mods.ash.api.modloader.forge.ForgeModLoader;
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 
@@ -37,7 +37,7 @@ public class KeyMappingRegistryImpl extends KeyMappingRegistry {
         if (!MOD_KEY_MAPPINGS.containsKey(modId)) {
             MOD_KEY_MAPPINGS.put(modId, new ArrayList<>());
 
-            ModEventBus.getOrThrow(modId).<RegisterKeyMappingsEvent>addListener(event -> {
+            ForgeModLoader.getEventBusOrThrow(modId).<RegisterKeyMappingsEvent>addListener(event -> {
                 for (KeyMapping key : MOD_KEY_MAPPINGS.get(modId)) {
                     event.register(key);
                 }

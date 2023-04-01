@@ -1,4 +1,10 @@
 # Changelog
+## 0.3.2
+- Remove `ModEventBus` API on Forge
+- Add `ForgeModLoader` API on Forge
+- Add `ModOptions` and `ModOptionsManager` API
+- Add `ModOptionsScreen` and `ModOptionsScreenRegistry` API
+
 ## 0.1.6
 - Rename Ash to Ash API
 

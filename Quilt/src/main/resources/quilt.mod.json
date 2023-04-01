@@ -20,6 +20,7 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
+      "modmenu": "com.diontryban.mods.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
     },
     "depends": [
       {

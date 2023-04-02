@@ -21,25 +21,30 @@ package com.diontryban.ash.api.modloader.forge;
 
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.HashMap;
 import java.util.Optional;
 
 public class ForgeModLoader {
     private static final HashMap<String, ModLoadingContext> MOD_CONTEXTS = new HashMap<>();
+    private static final HashMap<String, FMLJavaModLoadingContext> FML_MOD_CONTEXTS = new HashMap<>();
 
     /**
-     * Registers a mod's Forge mod loading context instance for Ash to use when
-     * registering Forge events and other Forge registries that require it.
+     * Registers a mod's Forge mod loading context and FML mod loading context
+     * instance for Ash to use when registering Forge events and other Forge
+     * registries that require it.
      *
      * <p>You can get the mod loading context to pass to this method by calling
-     * {@link ModLoadingContext#get()}</p>
+     * {@link ModLoadingContext#get()} and {@link FMLJavaModLoadingContext#get()}.</p>
      *
      * @param modId the mod's mod id
      * @param context the mod's Forge mod loading context
+     * @param fmlContext the mod's FML mod loading context
      */
-    public static void registerMod(String modId, ModLoadingContext context) {
+    public static void registerMod(String modId, ModLoadingContext context, FMLJavaModLoadingContext fmlContext) {
         MOD_CONTEXTS.put(modId, context);
+        FML_MOD_CONTEXTS.put(modId, fmlContext);
     }
 
     /**
@@ -74,7 +79,7 @@ public class ForgeModLoader {
      * @return the Forge mod event bus for the given mod id
      */
     public static Optional<IEventBus> getEventBus(String modId) {
-        return getContext(modId).map(ModLoadingContext::extension);
+        return Optional.ofNullable(FML_MOD_CONTEXTS.get(modId)).map(context -> context.getModEventBus());
     }
 
     /**
@@ -87,6 +92,8 @@ public class ForgeModLoader {
      * @return the Forge mod event bus for the given mod id
      */
     public static IEventBus getEventBusOrThrow(String modId) {
-        return getContextOrThrow(modId).extension();
+        return getEventBus(modId).orElseThrow(
+                () -> new NullPointerException("Forge Mod " + modId + " has not been registered to Ash.")
+        );
     }
 }

@@ -47,7 +47,7 @@ public abstract class UseBlockEvent {
      * to swing its hand.</p>
      *
      * <p>It is fired on both the client and the server. Note that handling
-     * things differently on either side may cause desync!</p>
+     * things differently on either side may cause de-sync!</p>
      */
     @FunctionalInterface
     public interface UseBlockCallback {

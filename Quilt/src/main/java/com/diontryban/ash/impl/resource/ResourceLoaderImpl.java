@@ -57,13 +57,13 @@ public class ResourceLoaderImpl extends ResourceLoader {
                     }
 
                     @Override
-                    public CompletableFuture<Void> reload(
-                            PreparationBarrier preparationBarrier,
-                            ResourceManager resourceManager,
-                            ProfilerFiller preparationsProfiler,
-                            ProfilerFiller reloadProfiler,
-                            Executor backgroundExecutor,
-                            Executor gameExecutor
+                    public @NotNull CompletableFuture<Void> reload(
+                            @NotNull PreparationBarrier preparationBarrier,
+                            @NotNull ResourceManager resourceManager,
+                            @NotNull ProfilerFiller preparationsProfiler,
+                            @NotNull ProfilerFiller reloadProfiler,
+                            @NotNull Executor backgroundExecutor,
+                            @NotNull Executor gameExecutor
                     ) {
                         return reloadListener.reload(
                                 preparationBarrier,

@@ -27,6 +27,7 @@ import net.minecraft.client.gui.components.OptionsList;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Convenience abstract class for making a mod options screen that is simply a
@@ -47,6 +48,8 @@ public abstract class ModOptionsScreen<T extends ModOptions> extends Screen {
 
     @Override
     protected void init() {
+        if (this.minecraft == null) { return; }
+
         this.options.read();
 
         this.list = new OptionsList(this.minecraft, this.width, this.height, 32, this.height - 32, 25);
@@ -72,11 +75,13 @@ public abstract class ModOptionsScreen<T extends ModOptions> extends Screen {
 
     @Override
     public void onClose() {
-        this.minecraft.setScreen(this.parent);
+        if (this.minecraft != null) {
+            this.minecraft.setScreen(this.parent);
+        }
     }
 
     @Override
-    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
+    public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(poseStack);
         this.list.render(poseStack, mouseX, mouseY, partialTick);
         drawCenteredString(poseStack, this.font, this.title, this.width / 2, 20, 16777215);

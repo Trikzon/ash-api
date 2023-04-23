@@ -33,7 +33,7 @@ public abstract class KeyMappingRegistry {
      * <p>On Forge this registers with the Mod Event Bus, so you must register
      * with ModEventBus#register on Forge first.</p>
      *
-     * @param modId your mod's modid
+     * @param modId your mod's mod id
      * @param keyMapping the key mapping
      * @return the key mapping
      */
@@ -48,7 +48,7 @@ public abstract class KeyMappingRegistry {
      * <p>On Forge this registers with the Mod Event Bus, so you must register
      * with ModEventBus#register on Forge first.</p>
      *
-     * @param resLoc your mod's modid and the key mapping's unique name
+     * @param resLoc your mod's mod id and the key mapping's unique name
      * @param inputType type of input
      * @param key e.g. GLFW.GLFW_KEY_R
      * @param category key category
@@ -72,7 +72,7 @@ public abstract class KeyMappingRegistry {
      * Helper method of {@link KeyMappingRegistry#registerKeyMapping(ResourceLocation, InputConstants.Type, int, String)}.
      * It passes the default inputType of {@code InputConstants.Type.KEYSYM}.
      *
-     * @param resLoc your mod's modid and the key mapping's unique name
+     * @param resLoc your mod's mod id and the key mapping's unique name
      * @param key e.g. GLFW.GLFW_KEY_R
      * @param category key category
      * @return the key mapping

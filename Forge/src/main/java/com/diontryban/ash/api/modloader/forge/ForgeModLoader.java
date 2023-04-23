@@ -79,7 +79,7 @@ public class ForgeModLoader {
      * @return the Forge mod event bus for the given mod id
      */
     public static Optional<IEventBus> getEventBus(String modId) {
-        return Optional.ofNullable(FML_MOD_CONTEXTS.get(modId)).map(context -> context.getModEventBus());
+        return Optional.ofNullable(FML_MOD_CONTEXTS.get(modId)).map(FMLJavaModLoadingContext::getModEventBus);
     }
 
     /**

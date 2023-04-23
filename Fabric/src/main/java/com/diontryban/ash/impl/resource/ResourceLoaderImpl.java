@@ -27,6 +27,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -57,13 +58,13 @@ public class ResourceLoaderImpl extends ResourceLoader {
                     }
 
                     @Override
-                    public CompletableFuture<Void> reload(
-                            PreparationBarrier preparationBarrier,
-                            ResourceManager resourceManager,
-                            ProfilerFiller preparationsProfiler,
-                            ProfilerFiller reloadProfiler,
-                            Executor backgroundExecutor,
-                            Executor gameExecutor
+                    public @NotNull CompletableFuture<Void> reload(
+                            @NotNull PreparationBarrier preparationBarrier,
+                            @NotNull ResourceManager resourceManager,
+                            @NotNull ProfilerFiller preparationsProfiler,
+                            @NotNull ProfilerFiller reloadProfiler,
+                            @NotNull Executor backgroundExecutor,
+                            @NotNull Executor gameExecutor
                     ){
                         return reloadListener.reload(
                                 preparationBarrier,

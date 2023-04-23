@@ -9,8 +9,8 @@
       "Trikzon"
     ],
     "contact": {
-      "homepage": "https://github.com/Trikzon/ash",
-      "sources": "https://github.com/Trikzon/ash"
+      "homepage": "https://github.com/Trikzon/ash-api",
+      "sources": "https://github.com/Trikzon/ash-api"
     },
   
     "license": "LGPL-3.0-or-later",
@@ -23,13 +23,11 @@
       ]
     },
     "mixins": [
-        "ash.mixins.json",
-        "ash.fabric.mixins.json"
     ],
   
     "depends": {
       "fabric": "*",
-      "minecraft": ">=1.19.3",
+      "minecraft": "^1.19.3",
       "java": ">=17"
     },
     "suggests": {

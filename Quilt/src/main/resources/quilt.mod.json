@@ -11,9 +11,9 @@
         "Trikzon": "Owner"
       },
       "contact": {
-        "homepage": "https://github.com/Trikzon/ash",
-        "issues": "https://github.com/Trikzon/ash/issues",
-        "sources": "https://github.com/Trikzon/ash"
+        "homepage": "https://github.com/Trikzon/ash-api",
+        "issues": "https://github.com/Trikzon/ash-api/issues",
+        "sources": "https://github.com/Trikzon/ash-api"
       },
       "icon": "assets/ash/icon.png",
       "license": "LGPL-3.0-or-later"
@@ -33,13 +33,11 @@
       },
       {
         "id": "minecraft",
-        "versions": ">=1.19.3"
+        "versions": "^1.19.3"
       }
     ]
   },
   "mixin": [
-    "ash.mixins.json",
-    "ash.quilt.mixins.json"
   ],
   "modmenu": {
     "badges": [ "library" ]

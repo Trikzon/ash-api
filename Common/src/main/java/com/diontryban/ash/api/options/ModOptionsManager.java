@@ -68,22 +68,22 @@ public class ModOptionsManager<O extends ModOptions> {
         if (!file.exists()) {
             options = defaultOptions();
             write();
-        }
+        } else {
+            try (FileReader reader = new FileReader(file)) {
+                Gson gson = new Gson();
+                options = gson.fromJson(reader, optionsClass);
 
-        try (FileReader reader = new FileReader(file)) {
-            Gson gson = new Gson();
-            options = gson.fromJson(reader, optionsClass);
+                if (options.version < defaultOptions().getVersion()) {
+                    Ash.LOG.info("Found deprecated config file for mod " + modId + ". Updating.");
+                    options = defaultOptions();
+                    write();
+                }
 
-            if (options.version < defaultOptions().getVersion()) {
-                Ash.LOG.info("Found deprecated config file for mod " + modId + ". Updating.");
+            } catch (IOException e) {
+                Ash.LOG.error("Failed to read " + modId + "'s config file.");
                 options = defaultOptions();
                 write();
             }
-
-        } catch (IOException e) {
-            Ash.LOG.error("Failed to read " + modId + "'s config file.");
-            options = defaultOptions();
-            write();
         }
     }
 

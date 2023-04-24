@@ -23,6 +23,7 @@ import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenFactory;
 import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash.api.options.ModOptions;
 import com.diontryban.ash.api.options.ModOptionsManager;
+import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import net.minecraft.client.gui.screens.Screen;
 
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModOptionsScreenRegistryImpl extends ModOptionsScreenRegistry implements ModMenuApi {
-    private static final Map<String, com.terraformersmc.modmenu.api.ConfigScreenFactory<?>> MOD_CONFIG_SCREENS = new HashMap<>();
+    private static final Map<String, ConfigScreenFactory<?>> MOD_CONFIG_SCREENS = new HashMap<>();
 
     @Override
     protected <S extends Screen, O extends ModOptions> void registerModOptionsScreenImpl(
@@ -41,7 +42,7 @@ public class ModOptionsScreenRegistryImpl extends ModOptionsScreenRegistry imple
     }
 
     @Override
-    public Map<String, com.terraformersmc.modmenu.api.ConfigScreenFactory<?>> getProvidedConfigScreenFactories() {
+    public Map<String, ConfigScreenFactory<?>> getProvidedConfigScreenFactories() {
         return MOD_CONFIG_SCREENS;
     }
 }

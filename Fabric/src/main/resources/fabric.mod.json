@@ -19,7 +19,7 @@
     "environment": "*",
     "entrypoints": {
       "modmenu": [
-          "com.diontryban.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
+          "com.diontryban.ash.compat.AshFabricModMenuEntrypoint"
       ]
     },
     "mixins": [

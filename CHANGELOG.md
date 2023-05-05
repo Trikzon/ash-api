@@ -1,4 +1,7 @@
 # Changelog
+## 1.0.1
+- Fix crash when Mod Menu is not installed but a `ModOptionsScreen` is registered.
+
 ## 1.0.0
 - Add `ForgeModLoader` API on Forge
 - Add `ModOptions` and `ModOptionsManager` API

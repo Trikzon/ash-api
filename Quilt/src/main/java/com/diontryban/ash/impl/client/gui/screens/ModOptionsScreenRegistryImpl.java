@@ -23,26 +23,20 @@ import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenFactory;
 import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash.api.options.ModOptions;
 import com.diontryban.ash.api.options.ModOptionsManager;
-import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-import com.terraformersmc.modmenu.api.ModMenuApi;
 import net.minecraft.client.gui.screens.Screen;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
-public class ModOptionsScreenRegistryImpl extends ModOptionsScreenRegistry implements ModMenuApi {
-    private static final Map<String, ConfigScreenFactory<?>> MOD_CONFIG_SCREENS = new HashMap<>();
+public class ModOptionsScreenRegistryImpl extends ModOptionsScreenRegistry {
+    public static final Map<String, Function<Screen, ? extends Screen>> MOD_OPTIONS_SCREENS = new HashMap<>();
 
     @Override
     protected <S extends Screen, O extends ModOptions> void registerModOptionsScreenImpl(
             ModOptionsManager<O> options,
             ModOptionsScreenFactory<S, O> factory
     ) {
-        MOD_CONFIG_SCREENS.put(options.getModId(), parent -> factory.create(options, parent));
-    }
-
-    @Override
-    public Map<String, ConfigScreenFactory<?>> getProvidedConfigScreenFactories() {
-        return MOD_CONFIG_SCREENS;
+        MOD_OPTIONS_SCREENS.put(options.getModId(), parent -> factory.create(options, parent));
     }
 }

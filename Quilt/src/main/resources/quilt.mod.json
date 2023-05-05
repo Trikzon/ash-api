@@ -20,7 +20,7 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
-      "modmenu": "com.diontryban.ash.impl.client.gui.screens.ModOptionsScreenRegistryImpl"
+      "modmenu": "com.diontryban.ash.compat.AshQuiltModMenuEntrypoint"
     },
     "depends": [
       {

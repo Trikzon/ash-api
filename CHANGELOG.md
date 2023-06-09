@@ -1,4 +1,7 @@
 # Changelog
+## 2.0.0-rc.1
+- Port to 1.20
+
 ## 1.0.1
 - Fix crash when Mod Menu is not installed but a `ModOptionsScreen` is registered.
 

@@ -21,13 +21,12 @@ package com.diontryban.ash.api.client.gui.screens;
 
 import com.diontryban.ash.api.options.ModOptions;
 import com.diontryban.ash.api.options.ModOptionsManager;
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.OptionsList;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Convenience abstract class for making a mod options screen that is simply a
@@ -81,10 +80,10 @@ public abstract class ModOptionsScreen<T extends ModOptions> extends Screen {
     }
 
     @Override
-    public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(poseStack);
-        this.list.render(poseStack, mouseX, mouseY, partialTick);
-        drawCenteredString(poseStack, this.font, this.title, this.width / 2, 20, 16777215);
-        super.render(poseStack, mouseX, mouseY, partialTick);
+    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        this.renderBackground(graphics);
+        this.list.render(graphics, mouseX, mouseY, partialTick);
+        graphics.drawCenteredString(this.font, this.title, this.width / 2, 20, 16777215);
+        super.render(graphics, mouseX, mouseY, partialTick);
     }
 }

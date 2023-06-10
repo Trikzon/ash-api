@@ -1,4 +1,7 @@
 # Changelog
+## 2.0.0-rc.2
+- Fix ModOptionsScreenRegistry on Quilt
+
 ## 2.0.0-rc.1
 - Port to 1.20
 

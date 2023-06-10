@@ -1,4 +1,7 @@
 # Changelog
+## v1.0.2
+- Fix `ModOptionsScreenRegistry` on Quilt
+
 ## 1.0.1
 - Fix crash when Mod Menu is not installed but a `ModOptionsScreen` is registered.
 

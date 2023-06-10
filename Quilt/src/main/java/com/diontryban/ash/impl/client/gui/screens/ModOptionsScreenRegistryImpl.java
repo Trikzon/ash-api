@@ -21,22 +21,25 @@ package com.diontryban.ash.impl.client.gui.screens;
 
 import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenFactory;
 import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenRegistry;
+import com.diontryban.ash.api.modloader.ModLoader;
 import com.diontryban.ash.api.options.ModOptions;
 import com.diontryban.ash.api.options.ModOptionsManager;
+import com.diontryban.ash.compat.AshQuiltModMenuEntrypoint;
 import net.minecraft.client.gui.screens.Screen;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-
 public class ModOptionsScreenRegistryImpl extends ModOptionsScreenRegistry {
-    public static final Map<String, Function<Screen, ? extends Screen>> MOD_OPTIONS_SCREENS = new HashMap<>();
-
     @Override
     protected <S extends Screen, O extends ModOptions> void registerModOptionsScreenImpl(
             ModOptionsManager<O> options,
             ModOptionsScreenFactory<S, O> factory
     ) {
-        MOD_OPTIONS_SCREENS.put(options.getModId(), parent -> factory.create(options, parent));
+        // Guard access to AshQuiltModMenuEntrypoint only if Mod Menu is installed.
+        // If it isn't installed and AshQuiltModMenuEntrypoint is somehow class loaded, the game will crash.
+        if (ModLoader.isModLoaded("modmenu")) {
+            AshQuiltModMenuEntrypoint.addConfigScreenFactory(
+                    options.getModId(),
+                    parent -> factory.create(options, parent)
+            );
+        }
     }
 }

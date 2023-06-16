@@ -67,8 +67,8 @@ minecraft {
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
 
-    config "${mod_id}.mixins.json"
-    config "${mod_id}.forge.mixins.json"
+//    config "${mod_id}.mixins.json"
+//    config "${mod_id}.forge.mixins.json"
 }
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
@@ -126,7 +126,7 @@ modrinth {
     versionType = project.version_type
     changelog = rootProject.file('MINI_CHANGELOG.md').text
     uploadFile = jar
-    gameVersions = project.minecraft_versions.split(',').toList()
+    gameVersions = project.game_versions.split(',').toList()
     loaders = ['forge']
     dependencies {
     }
@@ -146,7 +146,6 @@ curseforge {
         if (project.is_client.toBoolean()) { addGameVersion 'Client' }
         if (project.is_server.toBoolean()) { addGameVersion 'Server' }
         addGameVersion project.java_version
-        addGameVersion '1.20.1'
-        project.minecraft_versions.split(',').each { addGameVersion it }
+        project.game_versions.split(',').each { addGameVersion it }
     }
 }

@@ -99,7 +99,7 @@ modrinth {
     versionType = project.version_type
     changelog = rootProject.file('MINI_CHANGELOG.md').text
     uploadFile = remapJar
-    gameVersions = project.minecraft_versions.split(',').toList()
+    gameVersions = project.game_versions.split(',').toList()
     loaders = ['fabric']
     dependencies {
         required.project 'fabric-api'
@@ -121,7 +121,7 @@ curseforge {
         if (project.is_client.toBoolean()) { addGameVersion 'Client' }
         if (project.is_server.toBoolean()) { addGameVersion 'Server' }
         addGameVersion project.java_version
-        project.minecraft_versions.split(',').each { addGameVersion it }
+        project.game_versions.split(',').each { addGameVersion it }
         relations {
             it.requiredDependency 'fabric-api'
             it.optionalDependency 'modmenu'

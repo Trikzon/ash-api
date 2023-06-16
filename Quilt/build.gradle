@@ -100,7 +100,7 @@ modrinth {
     versionType = project.version_type
     changelog = rootProject.file('MINI_CHANGELOG.md').text
     uploadFile = remapJar
-    gameVersions = project.minecraft_versions.split(',').toList()
+    gameVersions = project.game_versions.split(',').toList()
     loaders = ['quilt']
     dependencies {
         required.project 'qsl'
@@ -122,7 +122,7 @@ curseforge {
         if (project.is_client.toBoolean()) { addGameVersion 'Client' }
         if (project.is_server.toBoolean()) { addGameVersion 'Server' }
         addGameVersion project.java_version
-        project.minecraft_versions.split(',').each { addGameVersion it }
+        project.game_versions.split(',').each { addGameVersion it }
         relations {
             it.requiredDependency 'qsl'
             it.optionalDependency 'modmenu'

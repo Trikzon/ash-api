@@ -1,13 +1,20 @@
 plugins {
+    id 'idea'
     id 'java'
-    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
     id 'maven-publish'
+    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
 }
 
-archivesBaseName = "${mod_id}-common-${minecraft_version}"
+base {
+    archivesName = "${mod_id}-common"
+}
 
 minecraft {
     version(minecraft_version)
+
+    if (file("src/main/resources/${mod_id}.accesswidener").exists()) {
+        accessWideners(file("src/main/resources/${mod_id}.accesswidener"))
+    }
 }
 
 dependencies {
@@ -15,20 +22,10 @@ dependencies {
      implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 }
 
-processResources {
-    def buildProps = project.properties.clone()
-
-    filesMatching(['pack.mcmeta']) {
-        expand buildProps
-    }
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
+            artifactId base.archivesName.get()
             from components.java
         }
     }

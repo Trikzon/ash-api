@@ -1,41 +1,41 @@
 {
-  "schema_version": 1,
-  "quilt_loader": {
-    "group": "com.diontryban.ash",
-    "id": "ash",
-    "version": "${version}",
-    "metadata": {
-      "name": "Ash API",
-      "description": "An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).",
-      "contributors": {
-        "Trikzon": "Owner"
-      },
-      "contact": {
-        "homepage": "https://github.com/Trikzon/ash-api",
-        "issues": "https://github.com/Trikzon/ash-api/issues",
-        "sources": "https://github.com/Trikzon/ash-api"
-      },
-      "icon": "assets/ash/icon.png",
-      "license": "LGPL-3.0-or-later"
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "com.diontryban.ash",
+        "id": "ash",
+        "version": "${version}",
+        "metadata": {
+            "name": "Ash API",
+            "description": "An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).",
+            "contributors": {
+                "Trikzon": "Owner"
+            },
+            "contact": {
+                "homepage": "https://github.com/Trikzon/ash-api",
+                "issues": "https://github.com/Trikzon/ash-api/issues",
+                "sources": "https://github.com/Trikzon/ash-api"
+            },
+            "icon": "assets/ash/icon.png",
+            "license": "LGPL-3.0-or-later"
+        },
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+            "modmenu": "com.diontryban.ash.compat.AshQuiltModMenuEntrypoint"
+        },
+        "depends": [
+            {
+                "id": "quilted_fabric_api",
+                "versions": ">=7.0.0-"
+            },
+            {
+                "id": "minecraft",
+                "versions": "^1.20"
+            }
+        ]
     },
-    "intermediate_mappings": "net.fabricmc:intermediary",
-    "entrypoints": {
-      "modmenu": "com.diontryban.ash.compat.AshQuiltModMenuEntrypoint"
-    },
-    "depends": [
-      {
-        "id": "quilted_fabric_api",
-        "versions": ">=7.0.0-"
-      },
-      {
-        "id": "minecraft",
-        "versions": "^1.20"
-      }
-    ]
-  },
-  "mixin": [
-  ],
-  "modmenu": {
-    "badges": [ "library" ]
-  }
+    "mixin": [
+    ],
+    "modmenu": {
+        "badges": [ "library" ]
+    }
 }

@@ -1,12 +1,15 @@
 plugins {
-    id 'fabric-loom' version '1.1-SNAPSHOT'
-    id 'maven-publish'
+    id 'java'
     id 'idea'
-    id 'com.modrinth.minotaur' version '2.+'
-    id 'io.github.CDAGaming.cursegradle' version '1.6.1'
+    id 'maven-publish'
+    id 'com.modrinth.minotaur'
+    id 'io.github.CDAGaming.cursegradle'
+    id 'fabric-loom' version '1.2-SNAPSHOT'
 }
 
-archivesBaseName = "${mod_id}-fabric-${minecraft_version}"
+base {
+    archivesName = "${mod_id}-fabric"
+}
 
 repositories {
     maven {
@@ -27,7 +30,7 @@ dependencies {
 
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
-    implementation project(':Common')
+    implementation project(':common')
 }
 
 loom {
@@ -45,28 +48,32 @@ loom {
             runDir('run')
         }
     }
-}
-
-
-processResources {
-    from project(':Common').sourceSets.main.resources
-    inputs.property 'version', project.version
-
-    filesMatching('fabric.mod.json') {
-        expand 'version': project.version
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+    if (project(':common').file("src/main/resources/${mod_id}.accesswidener").exists()) {
+        accessWidenerPath.set(project(':common').file("src/main/resources/${mod_id}.accesswidener"))
     }
 }
 
-tasks.withType(JavaCompile) {
-    source(project(':Common').sourceSets.main.allSource)
+tasks.withType(JavaCompile).configureEach {
+    source(project(':common').sourceSets.main.allSource)
+}
+tasks.withType(Javadoc).configureEach {
+    source(project(':common').sourceSets.main.allJava)
+}
+tasks.named('sourcesJar', Jar) {
+    from project(':common').sourceSets.main.resources
+}
+
+processResources {
+    from project(':common').sourceSets.main.resources
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
+            artifactId base.archivesName.get()
             from components.java
         }
     }
@@ -86,13 +93,13 @@ publishing {
 
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
-    projectId = 'Q8xUICr6'
+    projectId = project.modrinth_id
     versionNumber = "${project.version}-fabric"
     versionName = "[Fabric ${project.minecraft_version}] v${project.version}"
-    versionType = 'beta'
+    versionType = project.version_type
     changelog = rootProject.file('MINI_CHANGELOG.md').text
     uploadFile = remapJar
-    gameVersions = ['1.20']
+    gameVersions = project.minecraft_versions.split(',').toList()
     loaders = ['fabric']
     dependencies {
         required.project 'fabric-api'
@@ -103,18 +110,18 @@ modrinth {
 curseforge {
     apiKey = System.getenv('CURSEFORGE_TOKEN')
     project {
-        id = '838498'
-        releaseType = 'beta'
+        id = project.curseforge_id
+        releaseType = project.version_type
         changelog = rootProject.file('MINI_CHANGELOG.md').text
         changelogType = 'markdown'
         mainArtifact(remapJar) {
             it.displayName = "[Fabric ${project.minecraft_version}] v${project.version}"
         }
         addGameVersion 'Fabric'
-        addGameVersion 'Client'
-        addGameVersion 'Server'
-        addGameVersion 'Java 17'
-        addGameVersion '1.20'
+        if (project.is_client.toBoolean()) { addGameVersion 'Client' }
+        if (project.is_server.toBoolean()) { addGameVersion 'Server' }
+        addGameVersion project.java_version
+        project.minecraft_versions.split(',').each { addGameVersion it }
         relations {
             it.requiredDependency 'fabric-api'
             it.optionalDependency 'modmenu'

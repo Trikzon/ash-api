@@ -2,7 +2,7 @@
     "schema_version": 1,
     "quilt_loader": {
         "group": "com.diontryban.ash",
-        "id": "ash",
+        "id": "ash_api",
         "version": "${version}",
         "metadata": {
             "name": "Ash API",
@@ -15,7 +15,7 @@
                 "issues": "https://github.com/Trikzon/ash-api/issues",
                 "sources": "https://github.com/Trikzon/ash-api"
             },
-            "icon": "assets/ash/icon.png",
+            "icon": "assets/ash_api/icon.png",
             "license": "LGPL-3.0-or-later"
         },
         "intermediate_mappings": "net.fabricmc:intermediary",

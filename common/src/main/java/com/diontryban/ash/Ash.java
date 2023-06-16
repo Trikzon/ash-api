@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Ash {
-    public static final String MOD_ID = "ash";
+    public static final String MOD_ID = "ash_api";
     public static final String MOD_NAME = "Ash API";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 }

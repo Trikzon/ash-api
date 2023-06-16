@@ -4,19 +4,19 @@ license="LGPL-3.0-or-later"
 issueTrackerURL="https://github.com/trikzon/ash-api/issues" #optional
 
 [[mods]] #mandatory
-modId="ash" #mandatory
+modId="ash_api" #mandatory
 version="${file.jarVersion}" #mandatory
 displayName="Ash API" #mandatory
 #updateJSONURL="" #optional
 displayURL="https://github.com/trikzon/ash-api" #optional
-logoFile="assets/ash/icon.png" #optional
+logoFile="assets/ash_api/icon.png" #optional
 #credits="" #optional
 authors="Trikzon" #optional
 description='''
 An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).
 '''
 
-[[dependencies.ash]] #optional
+[[dependencies.ash_api]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
     versionRange="[46,)" #mandatory
@@ -25,7 +25,7 @@ An API that provides an abstraction layer between the three main Minecraft mod l
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 
-[[dependencies.ash]]
+[[dependencies.ash_api]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20,1.21)"

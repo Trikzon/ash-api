@@ -1,4 +1,7 @@
 # Changelog
+## 2.1.0
+- Change mod id to `ash_api`
+
 ## 2.0.0
 ### 2.0.0-rc.2
 - Fix ModOptionsScreenRegistry on Quilt

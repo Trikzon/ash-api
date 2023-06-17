@@ -1,6 +1,7 @@
 # Changelog
-## 2.1.0
+## 2.1.0+1.20
 - Change mod id to `ash_api`
+- Add minecraft version to the end of version number
 
 ## 2.0.0
 ### 2.0.0-rc.2

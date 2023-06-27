@@ -1,5 +1,4 @@
-## 2.1.0+1.20
-- Change mod id to `ash_api`
-- Add minecraft version to the end of version number
+## 3.0.0+1.20.1
+- Update to MC 1.20.1
 
-A full changelog is hosted on [GitHub](https://github.com/Trikzon/ash-api/blob/1.20/CHANGELOG.md).
+A full changelog is hosted on [GitHub](https://github.com/Trikzon/ash-api/blob/1.20.1/CHANGELOG.md).

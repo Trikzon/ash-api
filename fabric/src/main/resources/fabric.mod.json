@@ -23,7 +23,7 @@
     ],
     "depends": {
         "fabric": "*",
-        "minecraft": "^1.20",
+        "minecraft": "^1.20.1",
         "java": ">=17"
     },
     "suggests": {

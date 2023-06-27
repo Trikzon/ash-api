@@ -1,4 +1,7 @@
 # Changelog
+## 3.0.0+1.20.1
+- Update to MC 1.20.1
+
 ## 2.1.0+1.20
 - Change mod id to `ash_api`
 - Add minecraft version to the end of version number

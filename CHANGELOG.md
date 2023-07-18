@@ -1,4 +1,7 @@
 # Changelog
+## v1.0.3
+- Add `*ModInitializer` APIs to give Ash control over initialization flow
+
 ## v1.0.2
 - Fix `ModOptionsScreenRegistry` on Quilt
 

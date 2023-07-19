@@ -26,7 +26,7 @@ import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 
 import java.util.function.Supplier;
 
-public class QuiltClientModInitializer implements ClientModInitializer {
+public abstract class QuiltClientModInitializer implements ClientModInitializer {
     protected CommonClientModInitializer commonClientModInitializer;
 
     protected QuiltClientModInitializer(@Nullable Supplier<CommonClientModInitializer> commonClientModInitializer) {

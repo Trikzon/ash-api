@@ -26,7 +26,7 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
 import java.util.function.Supplier;
 
-public class QuiltModInitializer implements ModInitializer {
+public abstract class QuiltModInitializer implements ModInitializer {
     protected CommonModInitializer commonModInitializer;
 
     protected QuiltModInitializer(@Nullable Supplier<CommonModInitializer> commonModInitializer) {
@@ -37,6 +37,8 @@ public class QuiltModInitializer implements ModInitializer {
 
     @Override
     public void onInitialize(ModContainer mod) {
-
+        if (commonModInitializer != null) {
+            commonModInitializer.onInitialize();
+        }
     }
 }

@@ -89,7 +89,7 @@ modrinth {
     projectId = 'Q8xUICr6'
     versionNumber = "${project.version}-quilt"
     versionName = "[Quilt ${project.minecraft_version}] v${project.version}"
-    versionType = 'beta'
+    versionType = 'release'
     changelog = rootProject.file('MINI_CHANGELOG.md').text
     uploadFile = remapJar
     gameVersions = ['1.19.4']
@@ -104,7 +104,7 @@ curseforge {
     apiKey = System.getenv('CURSEFORGE_TOKEN')
     project {
         id = '838498'
-        releaseType = 'beta'
+        releaseType = 'release'
         changelog = rootProject.file('MINI_CHANGELOG.md').text
         changelogType = 'markdown'
         mainArtifact(remapJar) {

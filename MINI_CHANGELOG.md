@@ -1,3 +1,6 @@
+## v1.0.4
+- Fix implementation of `*ModInitializer` APIs
+
 ## v1.0.3
 - Add `*ModInitializer` APIs to give Ash control over initialization flow
 

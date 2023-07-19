@@ -1,3 +1,6 @@
+## 3.0.2+1.20.1
+- Fix version in jar file
+
 ## 3.0.1+1.20.1
 - Add `*ModInitializer` APIs to give Ash control over initialization flow.
 

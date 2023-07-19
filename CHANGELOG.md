@@ -1,3 +1,6 @@
+## 3.0.1+1.20.1
+- Add `*ModInitializer` APIs to give Ash control over initialization flow.
+
 # Changelog
 ## 3.0.0+1.20.1
 - Update to MC 1.20.1

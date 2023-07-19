@@ -1,3 +1,6 @@
+## 2.1.1+1.20
+- Add `*ModInitializer` APIs to give Ash control over initialization flow
+
 ## 2.1.0+1.20
 - Change mod id to `ash_api`
 - Add minecraft version to the end of version number

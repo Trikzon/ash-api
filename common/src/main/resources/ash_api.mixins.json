@@ -1,15 +1,17 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "com.diontryban.ash.mixin",
+    "package": "com.diontryban.ash_api.mixin",
     "refmap": "${mod_id}.refmap.json",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
     ],
     "client": [
     ],
+    "server": [
+    ],
     "injectors": {
-      "defaultRequire": 1
+        "defaultRequire": 1
     }
-  }
-  
+}
+

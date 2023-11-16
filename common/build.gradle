@@ -2,17 +2,14 @@ plugins {
     id 'idea'
     id 'java'
     id 'maven-publish'
-    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
+    id 'org.spongepowered.gradle.vanilla'
 }
-
 base {
-    archivesName = "${mod_id}-common"
+    archivesName = "${mod_name}-common-${minecraft_version}"
 }
-
 minecraft {
     version(minecraft_version)
-
-    if (file("src/main/resources/${mod_id}.accesswidener").exists()) {
+    if(file("src/main/resources/${mod_id}.accesswidener").exists()){
         accessWideners(file("src/main/resources/${mod_id}.accesswidener"))
     }
 }
@@ -29,16 +26,9 @@ publishing {
             from components.java
         }
     }
-
     repositories {
-        if (System.getenv("DIONTRYBAN_MAVEN_TOKEN") != null) {
-            maven {
-                url = 'https://maven.diontryban.com/releases'
-                credentials {
-                    username = 'trikzon'
-                    password = System.getenv("DIONTRYBAN_MAVEN_TOKEN")
-                }
-            }
+        maven {
+            url "file://" + System.getenv("local_maven")
         }
     }
 }

@@ -1,29 +1,32 @@
 {
     "schemaVersion": 1,
-    "id": "ash_api",
+    "id": "${mod_id}",
     "version": "${version}",
-    "name": "Ash API",
-    "description": "An API that provides an abstraction layer between the three main Minecraft mod loaders (Fabric, Forge, and Quilt).",
+    "name": "${mod_name}",
+    "description": "${description}",
     "authors": [
-        "Trikzon"
+        "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://github.com/Trikzon/ash-api",
-        "sources": "https://github.com/Trikzon/ash-api"
+        "homepage": "https://fabricmc.net/",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
-    "license": "LGPL-3.0-or-later",
-    "icon": "assets/ash_api/icon.png",
+    "license": "${license}",
+    "icon": "assets/${mod_id}/icon.png",
     "environment": "*",
     "entrypoints": {
         "modmenu": [
-            "com.diontryban.ash.compat.AshFabricModMenuEntrypoint"
+            "com.diontryban.ash_api.compat.AshApiModMenuEntrypoint"
         ]
     },
     "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
+        "fabricloader": ">=0.14",
         "fabric": "*",
-        "minecraft": "^1.20.1",
+        "minecraft": "1.20.2",
         "java": ">=17"
     },
     "suggests": {
@@ -34,5 +37,5 @@
             "badges": [ "library" ]
         }
     }
-  }
+}
   

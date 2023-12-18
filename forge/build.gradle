@@ -5,7 +5,7 @@ plugins {
     id 'org.spongepowered.mixin'
 }
 base {
-    archivesName = "${mod_name}-forge-${minecraft_version}"
+    archivesName = "${mod_id}-forge"
 }
 mixin {
     add(sourceSets.main, "${mod_id}.refmap.json")
@@ -105,8 +105,14 @@ publishing {
         }
     }
     repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
+        if (System.getenv("DIONTRYBAN_MAVEN_USER") != null && System.getenv("DIONTRYBAN_MAVEN_TOKEN") != null) {
+            maven {
+                url = 'https://maven.diontryban.com/releases'
+                credentials {
+                    username = System.getenv("DIONTRYBAN_MAVEN_USER")
+                    password = System.getenv("DIONTRYBAN_MAVEN_TOKEN")
+                }
+            }
         }
     }
 }

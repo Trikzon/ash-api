@@ -50,7 +50,7 @@ public abstract class ClientTickEvents {
     /**
      * Callback for the start of the client's tick loop.
      *
-     * <p><h2>Warning</h2>The client tick loop is a very hot code path, so any
+     * <p><b>Warning: </b>The client tick loop is a very hot code path, so any
      * callback registered should ensure as little time as possible is spent
      * executing.</p>
      */
@@ -66,7 +66,7 @@ public abstract class ClientTickEvents {
      * <p>Since there is a time gap before the next tick, this is a great place
      * to run any asynchronous operations for the next tick.</p>
      *
-     * <p><h2>Warning</h2>The client tick loop is a very hot code path, so any
+     * <p><b>Warning: </b>The client tick loop is a very hot code path, so any
      * callback registered should ensure as little time as possible is spent
      * executing.</p>
      */

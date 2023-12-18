@@ -6,7 +6,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_name}-fabric-${minecraft_version}"
+    archivesName = "${mod_id}-fabric"
 }
 
 repositories {
@@ -71,8 +71,14 @@ publishing {
         }
     }
     repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
+        if (System.getenv("DIONTRYBAN_MAVEN_USER") != null && System.getenv("DIONTRYBAN_MAVEN_TOKEN") != null) {
+            maven {
+                url = 'https://maven.diontryban.com/releases'
+                credentials {
+                    username = System.getenv("DIONTRYBAN_MAVEN_USER")
+                    password = System.getenv("DIONTRYBAN_MAVEN_TOKEN")
+                }
+            }
         }
     }
 }

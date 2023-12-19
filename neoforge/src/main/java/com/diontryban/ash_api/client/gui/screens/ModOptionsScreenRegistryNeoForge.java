@@ -19,10 +19,10 @@
 
 package com.diontryban.ash_api.client.gui.screens;
 
-import com.diontryban.ash_api.modloader.NeoForgeModLoader;
 import com.diontryban.ash_api.options.ModOptions;
 import com.diontryban.ash_api.options.ModOptionsManager;
 import net.minecraft.client.gui.screens.Screen;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.ConfigScreenHandler;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -34,11 +34,13 @@ public final class ModOptionsScreenRegistryNeoForge extends ModOptionsScreenRegi
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory
     ) {
-        NeoForgeModLoader.getContextOrThrow(options.getModId()).registerExtensionPoint(
-                ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new ConfigScreenHandler.ConfigScreenFactory(
-                        (minecraft, screen) -> factory.create(options, screen)
-                )
-        );
+        ModList.get().getModContainerById(options.getModId())
+                .orElseThrow(() -> new RuntimeException("Attempted to register ModOptionsScreen for nonexistent mod: " + options.getModId()))
+                .registerExtensionPoint(
+                        ConfigScreenHandler.ConfigScreenFactory.class,
+                        () -> new ConfigScreenHandler.ConfigScreenFactory(
+                                (minecraft, screen) -> factory.create(options, screen)
+                        )
+                );
     }
 }

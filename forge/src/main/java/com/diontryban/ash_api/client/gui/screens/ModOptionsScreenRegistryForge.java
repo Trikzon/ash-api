@@ -19,11 +19,11 @@
 
 package com.diontryban.ash_api.client.gui.screens;
 
-import com.diontryban.ash_api.modloader.ForgeModLoader;
 import com.diontryban.ash_api.options.ModOptions;
 import com.diontryban.ash_api.options.ModOptionsManager;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,11 +34,13 @@ public final class ModOptionsScreenRegistryForge extends ModOptionsScreenRegistr
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory
     ) {
-        ForgeModLoader.getContextOrThrow(options.getModId()).registerExtensionPoint(
-                ConfigScreenHandler.ConfigScreenFactory.class,
-                () -> new ConfigScreenHandler.ConfigScreenFactory(
-                        (minecraft, screen) -> factory.create(options, screen)
-                )
-        );
+        ModList.get().getModContainerById(options.getModId())
+                .orElseThrow(() -> new RuntimeException("Attempted to register ModOptionsScreen for nonexistent mod: " + options.getModId()))
+                .registerExtensionPoint(
+                        ConfigScreenHandler.ConfigScreenFactory.class,
+                        () -> new ConfigScreenHandler.ConfigScreenFactory(
+                                (minecraft, screen) -> factory.create(options, screen)
+                        )
+                );
     }
 }

@@ -1,4 +1,7 @@
 # Changelog
+## 20.2.2-beta
+- Fixed ModOptionsScreen registration on Forge and NeoForge
+
 ## 20.2.1-beta
 - Fixed links in modloader meta files.
 - Fixed ModOptionsScreen rendering. Likely broke due to 1.20.2.

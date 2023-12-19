@@ -86,9 +86,13 @@ public abstract class ModOptionsScreen<T extends ModOptions> extends Screen {
 
     @Override
     public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        renderBackground(graphics, mouseX, mouseY, partialTick);
-        list.render(graphics, mouseX, mouseY, partialTick);
-        graphics.drawCenteredString(font, title, width / 2, 20, 16777215);
         super.render(graphics, mouseX, mouseY, partialTick);
+        list.render(graphics, mouseX, mouseY, partialTick);
+        graphics.drawCenteredString(this.font, this.title, this.width / 2, 20, 16777215);
+    }
+
+    @Override
+    public void renderBackground(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        renderDirtBackground(graphics);
     }
 }

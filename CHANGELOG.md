@@ -1,4 +1,7 @@
 # Changelog
+## v20.2.3-beta
+- Fixed crash when opening the mod menu entry on NeoForge
+
 ## 20.2.2-beta
 - Fixed ModOptionsScreen registration on Forge and NeoForge
 

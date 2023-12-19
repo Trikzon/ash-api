@@ -8,8 +8,9 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://modrinth.com/mod/ash-api",
+        "sources": "https://github.com/Trikzon/ash-api",
+        "issues": "https://github.com/Trikzon/ash-api/issues"
     },
     "license": "${license}",
     "icon": "assets/${mod_id}/icon.png",

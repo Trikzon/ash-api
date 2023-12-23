@@ -1,4 +1,7 @@
 # Changelog
+## v20.4.0-beta
+- Updated to MC 1.20.4.
+
 ## v20.2.3
 ### v20.2.3-beta
 - Fixed crash when opening the mod menu entry on NeoForge

@@ -58,7 +58,7 @@ public abstract class ModOptionsScreen<T extends ModOptions> extends Screen {
 
         options.read();
 
-        list = new OptionsList(minecraft, width, height, 32, height - 32, 25);
+        list = new OptionsList(minecraft, width, height - 64, 32, 25);
         addOptions();
 
         addWidget(list);

@@ -1,6 +1,7 @@
 # Changelog
-## v20.4.0-beta
+## v20.4.0
 - Updated to MC 1.20.4.
+- Fixed logo file on NeoForge.
 
 ## v20.2.3
 ### v20.2.3-beta

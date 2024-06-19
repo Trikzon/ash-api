@@ -20,6 +20,7 @@ package com.diontryban.ash_api.modloader;
 
 import org.jetbrains.annotations.ApiStatus;
 
+// TODO: In 1.21, use NeoForge's @Mod.dist property instead.
 @ApiStatus.AvailableSince("20.2.0-beta")
 public abstract class CommonModInitializer {
     @ApiStatus.AvailableSince("20.2.0-beta")

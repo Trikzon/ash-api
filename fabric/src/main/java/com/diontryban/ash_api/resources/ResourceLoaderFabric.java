@@ -58,7 +58,7 @@ public final class ResourceLoaderFabric extends ResourceLoader {
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
                 @Override
                 public ResourceLocation getFabricId() {
-                    return new ResourceLocation(reloadListener.getName());
+                    return ResourceLocation.parse(reloadListener.getName());
                 }
 
                 @Override

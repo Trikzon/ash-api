@@ -19,9 +19,9 @@
 
 package com.diontryban.ash_api.modloader;
 
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -40,8 +40,6 @@ public abstract class NeoForgeModInitializer {
             @Nullable Supplier<CommonModInitializer> commonModInitializer,
             @Nullable Supplier<NeoForgeClientModInitializer> forgeClientModInitializer
     ) {
-        NeoForgeModLoader.registerMod(modId, ModLoadingContext.get(), FMLJavaModLoadingContext.get());
-
         if (commonModInitializer != null) {
             this.commonModInitializer = commonModInitializer.get();
         }
@@ -50,7 +48,13 @@ public abstract class NeoForgeModInitializer {
             forgeClientModInitializer.get();
         }
 
-        NeoForgeModLoader.getEventBusOrThrow(modId).addListener(this::onInitialize);
+        var eventBus = ModList.get().getModContainerById(modId).orElseThrow(
+                () -> new NullPointerException("Mod with id " + modId + " does not exist. Cannot construct mod initializer.")
+        ).getEventBus();
+
+        if (eventBus != null) {
+            eventBus.addListener(this::onInitialize);
+        }
     }
 
     @ApiStatus.AvailableSince("20.2.0-beta")

@@ -19,6 +19,7 @@
 
 package com.diontryban.ash_api.modloader;
 
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +41,13 @@ public abstract class NeoForgeClientModInitializer {
             this.commonClientModInitializer = commonClientModInitializer.get();
         }
 
-        NeoForgeModLoader.getEventBusOrThrow(modId).addListener(this::onInitializeClient);
+        var eventBus = ModList.get().getModContainerById(modId).orElseThrow(
+                () -> new NullPointerException("Mod with id " + modId + " does not exist. Cannot construct client mod initializer.")
+        ).getEventBus();
+
+        if (eventBus != null) {
+            eventBus.addListener(this::onInitializeClient);
+        }
     }
 
     @ApiStatus.AvailableSince("20.2.0-beta")

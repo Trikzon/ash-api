@@ -1,4 +1,10 @@
 # Changelog
+## v21.0.0-beta
+- Update to MC 1.21
+- Remove Forge support
+- Remove NeoForgeModLoader. Mods no longer need to register themselves with
+  Ash API on NeoForge
+
 ## v20.6.2
 ### v20.6.2-beta
 - Fix jar file for Forge build. Forge no longer re-obfuscates its jars.

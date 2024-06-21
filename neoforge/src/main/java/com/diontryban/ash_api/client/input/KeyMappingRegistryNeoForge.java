@@ -19,8 +19,8 @@
 
 package com.diontryban.ash_api.client.input;
 
-import com.diontryban.ash_api.modloader.NeoForgeModLoader;
 import net.minecraft.client.KeyMapping;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -39,11 +39,17 @@ public final class KeyMappingRegistryNeoForge extends KeyMappingRegistry {
         if (!MOD_KEY_MAPPINGS.containsKey(modId)) {
             MOD_KEY_MAPPINGS.put(modId, new ArrayList<>());
 
-            NeoForgeModLoader.getEventBusOrThrow(modId).<RegisterKeyMappingsEvent>addListener(event -> {
-                for (KeyMapping key : MOD_KEY_MAPPINGS.get(modId)) {
-                    event.register(key);
-                }
-            });
+            var eventBus = ModList.get().getModContainerById(modId).orElseThrow(
+                    () -> new NullPointerException("Mod with id " + modId + " does not exist. Cannot register key mapping.")
+            ).getEventBus();
+
+            if (eventBus != null) {
+                eventBus.<RegisterKeyMappingsEvent>addListener(event -> {
+                    for (KeyMapping key : MOD_KEY_MAPPINGS.get(modId)) {
+                        event.register(key);
+                    }
+                });
+            }
         }
 
         MOD_KEY_MAPPINGS.get(modId).add(keyMapping);

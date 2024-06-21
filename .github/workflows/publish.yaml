@@ -41,28 +41,10 @@ jobs:
           loaders: |
             neoforge
           game-versions: |
-            1.20.6
+            1.21
           java: 21
           name: "[NeoForge ${{ steps.gradle_props.outputs.minecraft_version }}] v${{ steps.gradle_props.outputs.version }}"
           version: "${{ steps.gradle_props.outputs.version }}-neoforge"
-          changelog-file: "MINI_CHANGELOG.md"
-      - name: Publish Forge to CurseForge and Modrinth
-        uses: Kir-Antipov/mc-publish@v3.3  # https://github.com/Kir-Antipov/mc-publish
-        with:
-          curseforge-id: 838498
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: Q8xUICr6
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          modrinth-featured: false
-          files: |
-            forge/build/libs/!(*-@(dev|sources|javadoc)).jar
-          loaders: |
-            forge
-          game-versions: |
-            1.20.6
-          java: 21
-          name: "[Forge ${{ steps.gradle_props.outputs.minecraft_version }}] v${{ steps.gradle_props.outputs.version }}"
-          version: "${{ steps.gradle_props.outputs.version }}-forge"
           changelog-file: "MINI_CHANGELOG.md"
       - name: Publish Fabric to CurseForge and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3  # https://github.com/Kir-Antipov/mc-publish
@@ -78,7 +60,7 @@ jobs:
             fabric
             quilt
           game-versions: |
-            1.20.6
+            1.21
           java: 21
           name: "[Fabric ${{ steps.gradle_props.outputs.minecraft_version }}] v${{ steps.gradle_props.outputs.version }}"
           version: "${{ steps.gradle_props.outputs.version }}-fabric"

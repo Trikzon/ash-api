@@ -22,7 +22,6 @@ package com.diontryban.ash_api.client.gui.screens;
 import com.diontryban.ash_api.options.ModOptions;
 import com.diontryban.ash_api.options.ModOptionsManager;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.OptionsList;
 import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -38,49 +37,25 @@ import org.jetbrains.annotations.NotNull;
 @ApiStatus.AvailableSince("20.2.0-beta")
 public abstract class ModOptionsScreen<T extends ModOptions> extends OptionsSubScreen {
     @ApiStatus.AvailableSince("20.2.0-beta")
-    protected final Screen parent;
-    @ApiStatus.AvailableSince("20.2.0-beta")
     protected final @NotNull ModOptionsManager<T> options;
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    protected OptionsList list;
 
     @ApiStatus.AvailableSince("20.2.0-beta")
     public ModOptionsScreen(@NotNull Component title, @NotNull ModOptionsManager<T> options, Screen parent) {
         super(parent, Minecraft.getInstance().options, title);
         this.options = options;
-        this.parent = parent;
     }
-
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    protected abstract void addOptions();
 
     @Override
     protected void init() {
         if (minecraft == null) { return; }
 
         options.read();
-        list = new OptionsList(minecraft, this.width, this);
-        addOptions();
-        addRenderableWidget(list);
 
         super.init();
     }
 
     @Override
-    protected void repositionElements() {
-        super.repositionElements();
-        this.list.updateSize(this.width, this.layout);
-    }
-
-    @Override
     public void removed() {
         options.write();
-    }
-
-    @Override
-    public void onClose() {
-        if (minecraft != null) {
-            minecraft.setScreen(parent);
-        }
     }
 }

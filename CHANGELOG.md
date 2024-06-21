@@ -1,4 +1,7 @@
 # Changelog
+## v21.0.1-beta
+- Fix ModOptionsScreen rendering duplicate option buttons
+
 ## v21.0.0-beta
 - Update to MC 1.21
 - Remove Forge support

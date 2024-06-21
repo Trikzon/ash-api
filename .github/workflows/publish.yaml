@@ -1,7 +1,7 @@
 name: Publish
 on:
-  create:
-    tag:
+  push:
+    tags:
       - "*"
 env:
   DIONTRYBAN_MAVEN_USER: github

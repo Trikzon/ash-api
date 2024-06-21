@@ -4,6 +4,7 @@
 - Remove Forge support
 - Remove NeoForgeModLoader. Mods no longer need to register themselves with
   Ash API on NeoForge
+- Remove empty NeoForge entrypoint. NeoForge does not require one anymore
 
 ## v20.6.2
 ### v20.6.2-beta

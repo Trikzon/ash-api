@@ -3,5 +3,6 @@
 - Remove Forge support
 - Remove NeoForgeModLoader. Mods no longer need to register themselves with
   Ash API on NeoForge
+- Remove empty NeoForge entrypoint. NeoForge does not require one anymore
 
 A full changelog is hosted on [GitHub](https://github.com/Trikzon/ash-api/blob/1.21/CHANGELOG.md).

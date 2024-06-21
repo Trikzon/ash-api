@@ -35,7 +35,7 @@ public final class KeyMappingRegistryNeoForge extends KeyMappingRegistry {
     private static final Map<String, List<KeyMapping>> MOD_KEY_MAPPINGS = new HashMap<>();
 
     @Override
-    protected @NotNull KeyMapping registerKeyMappingImpl(@NotNull String modId, @NotNull KeyMapping keyMapping) {
+    protected @NotNull KeyMapping registerImpl(@NotNull String modId, @NotNull KeyMapping keyMapping) {
         if (!MOD_KEY_MAPPINGS.containsKey(modId)) {
             MOD_KEY_MAPPINGS.put(modId, new ArrayList<>());
 

@@ -32,7 +32,7 @@ import java.util.function.Supplier;
 @ApiStatus.Internal
 public final class ModOptionsScreenRegistryNeoForge extends ModOptionsScreenRegistry {
     @Override
-    protected <S extends Screen, O extends ModOptions> void registerModOptionsScreenImpl(
+    protected <S extends Screen, O extends ModOptions> void registerImpl(
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory
     ) {

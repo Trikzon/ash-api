@@ -78,12 +78,12 @@ public final class ModOptionsManager<O extends ModOptions> {
                 options = gson.fromJson(reader, optionsClass);
 
                 if (options.version < defaultOptions().version) {
-                    AshApi.LOG.info("Found deprecated config file for mod " + modId + ". Updating.");
+                    AshApi.LOG.info("Found deprecated config file for mod {}. Updating.", modId);
                     options = defaultOptions();
                     write();
                 }
             } catch (IOException e) {
-                AshApi.LOG.error("Failed to read " + modId + "'s config file.");
+                AshApi.LOG.error("Failed to read {}'s config file.", modId);
                 options = defaultOptions();
                 write();
             }
@@ -100,7 +100,7 @@ public final class ModOptionsManager<O extends ModOptions> {
             writer.write(gson.toJson(options));
             writer.flush();
         } catch (IOException e) {
-            AshApi.LOG.error("Failed to write to config file for mod " + modId + ".");
+            AshApi.LOG.error("Failed to write to config file for mod {}.", modId);
         }
     }
 

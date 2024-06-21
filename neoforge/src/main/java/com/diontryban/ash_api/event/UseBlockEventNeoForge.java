@@ -24,9 +24,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Internal
-public final class UseBlockEventNeoForge extends UseBlockEvent {
+public final class UseBlockEventNeoForge extends UseBlockEvent.Impl {
     @Override
-    protected void registerImpl(UseBlockCallback callback) {
+    protected void registerImpl(UseBlockEvent callback) {
         NeoForge.EVENT_BUS.<PlayerInteractEvent.RightClickBlock>addListener(event -> {
             InteractionResult result = callback.useBlock(
                     event.getEntity(),

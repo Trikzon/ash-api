@@ -26,38 +26,39 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 
-@ApiStatus.AvailableSince("20.2.0-beta")
-@ApiStatus.NonExtendable
-public abstract class UseBlockEvent {
-    private static final UseBlockEvent IMPL = ServiceUtil.load(UseBlockEvent.class);
+/**
+ * Callback for right-clicking ("using") a block. It is called before the
+ * spectator check, so check for the player's game mode.
+ *
+ * <p>Returns an {@link InteractionResult}. If
+ * {@link InteractionResult#consumesAction()} is true, it will prevent
+ * further {@link UseBlockEvent} events from being processed for that
+ * event. Returning {@link InteractionResult#SUCCESS} will cause the player
+ * to swing its hand.</p>
+ *
+ * <p>It is fired on both the client and the server. Note that handling
+ * things differently on either side may cause de-sync!</p>
+ */
+@ApiStatus.AvailableSince("21.0.0-beta")
+@FunctionalInterface
+public interface UseBlockEvent {
+    InteractionResult useBlock(Player player, Level level, InteractionHand hand, BlockHitResult hitResult);
 
     /**
-     * Registers a {@link UseBlockCallback} to be called when a block is "used."
+     * Registers a {@link UseBlockEvent} to be called when a block is "used."
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static void register(UseBlockCallback callback) {
-        IMPL.registerImpl(callback);
+    @ApiStatus.AvailableSince("21.0.0-beta")
+    static void register(@NotNull UseBlockEvent callback) {
+        Impl.IMPL.registerImpl(callback);
     }
 
-    /**
-     * Callback for right-clicking ("using") a block. It is called before the
-     * spectator check, so check for the player's game mode.
-     *
-     * <p>Returns an {@link InteractionResult}. If
-     * {@link InteractionResult#consumesAction()} is true, it will prevent
-     * further {@link UseBlockCallback} events from being processed for that
-     * event. Returning {@link InteractionResult#SUCCESS} will cause the player
-     * to swing its hand.</p>
-     *
-     * <p>It is fired on both the client and the server. Note that handling
-     * things differently on either side may cause de-sync!</p>
-     */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    @FunctionalInterface
-    public interface UseBlockCallback {
-        InteractionResult useBlock(Player player, Level level, InteractionHand hand, BlockHitResult hitResult);
-    }
+    @ApiStatus.Internal
+    @ApiStatus.NonExtendable
+    abstract class Impl {
+        private static final UseBlockEvent.Impl IMPL = ServiceUtil.load(UseBlockEvent.Impl.class);
 
-    protected abstract void registerImpl(UseBlockCallback callback);
+        protected abstract void registerImpl(UseBlockEvent callback);
+    }
 }

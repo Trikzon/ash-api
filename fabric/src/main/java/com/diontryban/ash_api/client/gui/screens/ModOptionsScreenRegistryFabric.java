@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 @ApiStatus.Internal
 public final class ModOptionsScreenRegistryFabric extends ModOptionsScreenRegistry{
     @Override
-    protected <S extends Screen, O extends ModOptions> void registerModOptionsScreenImpl(
+    protected <S extends Screen, O extends ModOptions> void registerImpl(
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory
     ) {

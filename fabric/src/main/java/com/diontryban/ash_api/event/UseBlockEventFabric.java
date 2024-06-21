@@ -19,12 +19,13 @@
 
 package com.diontryban.ash_api.event;
 
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import org.jetbrains.annotations.ApiStatus;
 
 @ApiStatus.Internal
-public final class UseBlockEventFabric extends UseBlockEvent {
+public final class UseBlockEventFabric extends UseBlockEvent.Impl {
     @Override
-    protected void registerImpl(UseBlockCallback callback) {
-        net.fabricmc.fabric.api.event.player.UseBlockCallback.EVENT.register(callback::useBlock);
+    protected void registerImpl(UseBlockEvent callback) {
+        UseBlockCallback.EVENT.register(callback::useBlock);
     }
 }

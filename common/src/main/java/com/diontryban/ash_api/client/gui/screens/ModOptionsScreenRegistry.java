@@ -35,6 +35,10 @@ public abstract class ModOptionsScreenRegistry {
      * Registers a {@link Screen} as the mod options screen to be accessible
      * in-game in the mod menu.
      *
+     * <p>This should be called as early as possible, such as in your mod's
+     * constructor. This is to ensure that the screen is registered before
+     * Mod Menu's entrypoint runs (on Fabric).</p>
+     *
      * <p>On Fabric, this requires the Mod Menu mod to be installed. The game
      * can still be run without Mod Menu installed, but no mod options screen
      * will be available to the player.</p>
@@ -48,15 +52,15 @@ public abstract class ModOptionsScreenRegistry {
      * @param options the mod's global instance of mod options
      * @param factory the screen's constructor function
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static <S extends Screen, O extends ModOptions> void registerModOptionsScreen(
+    @ApiStatus.AvailableSince("21.0.0-beta")
+    public static <S extends Screen, O extends ModOptions> void register(
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory
     ) {
-        IMPL.registerModOptionsScreenImpl(options, factory);
+        IMPL.registerImpl(options, factory);
     }
 
-    protected abstract <S extends Screen, O extends ModOptions> void registerModOptionsScreenImpl(
+    protected abstract <S extends Screen, O extends ModOptions> void registerImpl(
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory
     );

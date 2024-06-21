@@ -24,59 +24,55 @@ import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-// TODO: In 1.21, rename to pre and post to match NeoForge's API.
-@ApiStatus.AvailableSince("20.2.0-beta")
+@ApiStatus.AvailableSince("21.0.0-beta")
 @ApiStatus.NonExtendable
-public abstract class ClientTickEvents {
-    private static final ClientTickEvents IMPL = ServiceUtil.load(ClientTickEvents.class);
+public abstract class ClientTickEvent {
+    private static final ClientTickEvent IMPL = ServiceUtil.load(ClientTickEvent.class);
 
     /**
-     * Registers a {@link StartCallback} to be called at the start of every
-     * client tick.
-     */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static void registerStart(@NotNull StartCallback callback) {
-        IMPL.registerStartImpl(callback);
-    }
-
-    /**
-     * Registers a {@link EndCallback} to be called at the end of every client
-     * tick.
-     */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static void registerEnd(@NotNull EndCallback callback) {
-        IMPL.registerEndImpl(callback);
-    }
-
-    /**
-     * Callback for the start of the client's tick loop.
+     * Callback for the before the client's tick.
      *
      * <p><b>Warning: </b>The client tick loop is a very hot code path, so any
      * callback registered should ensure as little time as possible is spent
      * executing.</p>
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
+    @ApiStatus.AvailableSince("21.0.0-beta")
     @FunctionalInterface
-    public interface StartCallback {
-        void startClientTick(Minecraft client);
+    public interface Pre {
+        void preClientTick(Minecraft client);
+
+        /**
+         * Registers a {@link ClientTickEvent.Pre} to be called before every
+         * client tick.
+         */
+        @ApiStatus.AvailableSince("21.0.0-beta")
+        static void register(@NotNull ClientTickEvent.Pre callback) {
+            IMPL.registerPreImpl(callback);
+        }
     }
 
     /**
-     * Callback for the end of the client's tick loop.
-     *
-     * <p>Since there is a time gap before the next tick, this is a great place
-     * to run any asynchronous operations for the next tick.</p>
+     * Callback for the after the client's tick.
      *
      * <p><b>Warning: </b>The client tick loop is a very hot code path, so any
      * callback registered should ensure as little time as possible is spent
      * executing.</p>
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
+    @ApiStatus.AvailableSince("21.0.0-beta")
     @FunctionalInterface
-    public interface EndCallback {
-        void endClientTick(Minecraft client);
+    public interface Post {
+        void postClientTick(Minecraft client);
+
+        /**
+         * Registers a {@link ClientTickEvent.Post} to be called after every
+         * client tick.
+         */
+        @ApiStatus.AvailableSince("21.0.0-beta")
+        static void register(@NotNull ClientTickEvent.Post callback) {
+            IMPL.registerPostImpl(callback);
+        }
     }
 
-    protected abstract void registerStartImpl(@NotNull StartCallback callback);
-    protected abstract void registerEndImpl(@NotNull EndCallback callback);
+    protected abstract void registerPreImpl(@NotNull ClientTickEvent.Pre callback);
+    protected abstract void registerPostImpl(@NotNull ClientTickEvent.Post callback);
 }

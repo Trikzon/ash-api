@@ -19,21 +19,19 @@
 
 package com.diontryban.ash_api.client.event;
 
-import net.minecraft.client.Minecraft;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.common.NeoForge;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 @ApiStatus.Internal
-public final class ClientTickEventsNeoForge extends ClientTickEvents {
+public final class ClientTickEventFabric extends ClientTickEvent {
     @Override
-    protected void registerStartImpl(@NotNull StartCallback callback) {
-        NeoForge.EVENT_BUS.<ClientTickEvent.Pre>addListener(event -> callback.startClientTick(Minecraft.getInstance()));
+    protected void registerPreImpl(@NotNull ClientTickEvent.Pre callback) {
+        ClientTickEvents.START_CLIENT_TICK.register(callback::preClientTick);
     }
 
     @Override
-    protected void registerEndImpl(@NotNull EndCallback callback) {
-        NeoForge.EVENT_BUS.<ClientTickEvent.Post>addListener(event -> callback.endClientTick(Minecraft.getInstance()));
+    protected void registerPostImpl(@NotNull ClientTickEvent.Post callback) {
+        ClientTickEvents.END_CLIENT_TICK.register(callback::postClientTick);
     }
 }

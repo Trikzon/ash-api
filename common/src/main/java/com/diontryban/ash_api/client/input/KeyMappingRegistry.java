@@ -37,13 +37,13 @@ public abstract class KeyMappingRegistry {
      * @param keyMapping the key mapping
      * @return the key mapping
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static @NotNull KeyMapping registerKeyMapping(@NotNull String modId, @NotNull KeyMapping keyMapping) {
-        return IMPL.registerKeyMappingImpl(modId, keyMapping);
+    @ApiStatus.AvailableSince("21.0.0-beta")
+    public static @NotNull KeyMapping register(@NotNull String modId, @NotNull KeyMapping keyMapping) {
+        return IMPL.registerImpl(modId, keyMapping);
     }
 
     /**
-     * Helper method of {@link KeyMappingRegistry#registerKeyMapping(String, KeyMapping)}.
+     * Helper method of {@link KeyMappingRegistry#register(String, KeyMapping)}.
      * It constructs a {@link KeyMapping} for you with constructor arguments.
      *
      * @param resLoc your mod's mod id and the key mapping's unique name
@@ -52,14 +52,14 @@ public abstract class KeyMappingRegistry {
      * @param category key category
      * @return the key mapping
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static @NotNull KeyMapping registerKeyMapping(
+    @ApiStatus.AvailableSince("21.0.0-beta")
+    public static @NotNull KeyMapping register(
             @NotNull ResourceLocation resLoc,
             @NotNull InputConstants.Type inputType,
             int key,
             @NotNull String category
     ) {
-        return registerKeyMapping(resLoc.getNamespace(), new KeyMapping(
+        return register(resLoc.getNamespace(), new KeyMapping(
                 String.format("key.%s.%s", resLoc.getNamespace(), resLoc.getPath()),
                 inputType,
                 key,
@@ -68,7 +68,7 @@ public abstract class KeyMappingRegistry {
     }
 
     /**
-     * Helper method of {@link KeyMappingRegistry#registerKeyMapping(ResourceLocation, InputConstants.Type, int, String)}.
+     * Helper method of {@link KeyMappingRegistry#register(ResourceLocation, InputConstants.Type, int, String)}.
      * It passes the default inputType of {@code InputConstants.Type.KEYSYM}.
      *
      * @param resLoc your mod's id and the key mapping's unique name
@@ -76,14 +76,14 @@ public abstract class KeyMappingRegistry {
      * @param category key category
      * @return the key mapping
      */
-    @ApiStatus.AvailableSince("20.2.0-beta")
-    public static @NotNull KeyMapping registerKeyMapping(
+    @ApiStatus.AvailableSince("21.0.0-beta")
+    public static @NotNull KeyMapping register(
             @NotNull ResourceLocation resLoc,
             int key,
             @NotNull String category
     ) {
-        return registerKeyMapping(resLoc, InputConstants.Type.KEYSYM, key, category);
+        return register(resLoc, InputConstants.Type.KEYSYM, key, category);
     }
 
-    protected abstract @NotNull KeyMapping registerKeyMappingImpl(@NotNull String modId, @NotNull KeyMapping keyMapping);
+    protected abstract @NotNull KeyMapping registerImpl(@NotNull String modId, @NotNull KeyMapping keyMapping);
 }

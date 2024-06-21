@@ -7,5 +7,10 @@
 - Remove Ash ModInitializers completely
   1. Mods no longer have to register themselves with Ash API on NeoForge
   2. NeoForge now allows for client-only entry points
+- Rename ClientTickEvents to ClientTickEvent
+  - Rename start and end callbacks to pre and post to match NeoForge
+- Rename `ModOptionsScreenRegistry#registerModOptionsScreen` to just `ModOptionsScreenRegistry#register`
+- Rename `KeyMappingRegistry#registerKeyMapping` to just `KeyMappingRegistry#register`
+- Rewrite UseBlockEvent to use root level functional interface
 
 A full changelog is hosted on [GitHub](https://github.com/Trikzon/ash-api/blob/1.21/CHANGELOG.md).

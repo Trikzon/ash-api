@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 @ApiStatus.Internal
 public final class KeyMappingRegistryFabric extends KeyMappingRegistry {
     @Override
-    protected @NotNull KeyMapping registerKeyMappingImpl(@NotNull String modId, @NotNull KeyMapping keyMapping) {
+    protected @NotNull KeyMapping registerImpl(@NotNull String modId, @NotNull KeyMapping keyMapping) {
         return KeyBindingHelper.registerKeyBinding(keyMapping);
     }
 }

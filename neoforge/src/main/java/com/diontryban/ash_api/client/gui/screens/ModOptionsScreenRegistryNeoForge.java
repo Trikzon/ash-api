@@ -40,7 +40,7 @@ public final class ModOptionsScreenRegistryNeoForge extends ModOptionsScreenRegi
                 .orElseThrow(() -> new RuntimeException("Attempted to register ModOptionsScreen for nonexistent mod: " + options.getModId()))
                 .registerExtensionPoint(
                         IConfigScreenFactory.class,
-                        (Supplier<IConfigScreenFactory>) () -> (mc, screen) -> factory.create(options, screen)
+                        (Supplier<IConfigScreenFactory>) () -> (modContainer, screen) -> factory.create(options, screen)
                 );
     }
 }

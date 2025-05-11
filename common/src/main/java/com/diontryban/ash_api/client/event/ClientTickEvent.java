@@ -73,6 +73,8 @@ public abstract class ClientTickEvent {
         }
     }
 
+    @ApiStatus.Internal
     protected abstract void registerPreImpl(@NotNull ClientTickEvent.Pre callback);
+    @ApiStatus.Internal
     protected abstract void registerPostImpl(@NotNull ClientTickEvent.Post callback);
 }

@@ -40,8 +40,8 @@ public final class ResourceLoaderNeoForge extends ResourceLoader {
 
     /**
      * Default constructor only to be used by {@link com.diontryban.ash_api.ServiceUtil}.
-     *
-     * @deprecated Use {@link ResourceLoader#get(PackType)}
+     * <p>
+     * Use {@link ResourceLoader#get(PackType)} instead.
      */
     public ResourceLoaderNeoForge() {
         type = null;

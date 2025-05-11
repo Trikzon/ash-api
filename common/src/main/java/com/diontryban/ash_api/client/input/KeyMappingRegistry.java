@@ -85,5 +85,6 @@ public abstract class KeyMappingRegistry {
         return register(resLoc, InputConstants.Type.KEYSYM, key, category);
     }
 
+    @ApiStatus.Internal
     protected abstract @NotNull KeyMapping registerImpl(@NotNull String modId, @NotNull KeyMapping keyMapping);
 }

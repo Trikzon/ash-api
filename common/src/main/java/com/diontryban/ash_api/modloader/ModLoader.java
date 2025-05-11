@@ -85,9 +85,14 @@ public abstract class ModLoader {
         return IMPL.getConfigDirImpl();
     }
 
+    @ApiStatus.Internal
     protected abstract @NotNull String getNameImpl();
+    @ApiStatus.Internal
     protected abstract boolean isModLoadedImpl(String modId);
+    @ApiStatus.Internal
     protected abstract boolean isDevelopmentEnvironmentImpl();
+    @ApiStatus.Internal
     protected abstract Path getGameDirImpl();
+    @ApiStatus.Internal
     protected abstract Path getConfigDirImpl();
 }

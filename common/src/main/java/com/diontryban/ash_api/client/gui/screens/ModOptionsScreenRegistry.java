@@ -60,6 +60,7 @@ public abstract class ModOptionsScreenRegistry {
         IMPL.registerImpl(options, factory);
     }
 
+    @ApiStatus.Internal
     protected abstract <S extends Screen, O extends ModOptions> void registerImpl(
             @NotNull ModOptionsManager<O> options,
             @NotNull ModOptionsScreenFactory<S, O> factory

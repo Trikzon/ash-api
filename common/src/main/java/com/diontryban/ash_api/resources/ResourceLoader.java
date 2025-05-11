@@ -52,5 +52,6 @@ public abstract class ResourceLoader {
     @ApiStatus.AvailableSince("20.2.0-beta")
     public abstract void registerReloadListener(@NotNull PreparableReloadListener reloadListener);
 
+    @ApiStatus.Internal
     protected abstract @NotNull ResourceLoader getImpl(PackType type);
 }

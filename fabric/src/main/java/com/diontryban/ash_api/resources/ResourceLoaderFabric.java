@@ -39,10 +39,9 @@ public final class ResourceLoaderFabric extends ResourceLoader {
 
     /**
      * Default constructor only to be used by {@link com.diontryban.ash_api.ServiceUtil}.
-     *
-     * @deprecated Use {@link ResourceLoader#get(PackType)}
+     * <p>
+     * Use {@link ResourceLoader#get(PackType)} instead.
      */
-    @ApiStatus.Internal
     public ResourceLoaderFabric() {
         resourceManagerHelper = null;
     }
@@ -53,8 +52,9 @@ public final class ResourceLoaderFabric extends ResourceLoader {
 
     @Override
     public void registerReloadListener(@NotNull PreparableReloadListener reloadListener) {
-        // Would only be null if improperly created with the deprecated default constructor.
+        // Would only be null if improperly created with the internal default constructor.
         assert resourceManagerHelper != null;
+
         resourceManagerHelper.registerReloadListener(new IdentifiableResourceReloadListener() {
                 @Override
                 public ResourceLocation getFabricId() {

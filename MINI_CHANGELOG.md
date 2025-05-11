@@ -1,4 +1,3 @@
-## v21.0.2
 - Update to MC 1.21
 - Remove Forge support
 - Remove NeoForgeModLoader. Mods no longer need to register themselves with

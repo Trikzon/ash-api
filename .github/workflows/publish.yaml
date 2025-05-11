@@ -69,3 +69,11 @@ jobs:
             fabric-api
       - name: Publish All to Maven
         run: ./gradlew publish
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            neoforge/build/libs/!(*-@(dev|sources|javadoc)).jar
+            fabric/build/libs/!(*-@(dev|sources|javadoc)).jar
+          body_path: MINI_CHANGELOG.md

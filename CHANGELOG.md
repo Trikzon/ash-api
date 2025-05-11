@@ -1,5 +1,5 @@
 # Changelog
-## v21.0.2-beta
+## v21.0.2
 - Fix ModOptionsScreen crash caused by NeoForge breaking change
 
 ## v21.0.1-beta

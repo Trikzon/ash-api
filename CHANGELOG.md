@@ -1,11 +1,12 @@
 # Changelog
 ## v21.0.2
+### v21.0.2-beta
 - Fix ModOptionsScreen crash caused by NeoForge breaking change
 
-## v21.0.1-beta
+### v21.0.1-beta
 - Fix ModOptionsScreen rendering duplicate option buttons
 
-## v21.0.0-beta
+### v21.0.0-beta
 - Update to MC 1.21
 - Remove Forge support
 - Remove NeoForgeModLoader. Mods no longer need to register themselves with

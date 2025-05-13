@@ -1,4 +1,7 @@
 # Changelog
+## v21.0.4
+- Fix race conditon on NeoForge when registering KeyMappings.
+
 ## v21.0.3
 - Update build scripts using [MDK Generator](https://github.com/Trikzon/mdk-generator). No functional changes.
 

@@ -26,13 +26,13 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 @ApiStatus.Internal
 public final class KeyMappingRegistryNeoForge extends KeyMappingRegistry {
-    private static final Map<String, List<KeyMapping>> MOD_KEY_MAPPINGS = new HashMap<>();
+    private static final ConcurrentMap<String, List<KeyMapping>> MOD_KEY_MAPPINGS = new ConcurrentHashMap<>();
 
     @Override
     protected @NotNull KeyMapping registerImpl(@NotNull String modId, @NotNull KeyMapping keyMapping) {

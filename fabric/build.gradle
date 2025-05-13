@@ -11,25 +11,33 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
     mappings loom.layered {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+        parchment("org.parchmentmc.data:parchment-${project.parchment_minecraft_version}:${project.parchment_version}@zip")
     }
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
-    modApi "com.terraformersmc:modmenu:${modmenu_version}"
+    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    if (project.ash_version != "") {
+        modImplementation "com.diontryban.ash_api:ash_api-fabric:${project.ash_version}"
+    }
+
+    if (project.modmenu_version != "") {
+        modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
+    }
 }
 
 loom {
-    def aw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
+    def aw = project(':common').file("src/main/resources/${project.mod_id}.accesswidener")
     if (aw.exists()) {
         accessWidenerPath.set(aw)
     }
 
     mixin {
-        defaultRefmapName.set("${mod_id}.refmap.json")
+        defaultRefmapName.set("${mod_name}.refmap.json")
     }
 
     runs {
@@ -39,6 +47,7 @@ loom {
             ideConfigGenerated(true)
             runDir('runs/client')
         }
+
         server {
             server()
             setConfigName('Fabric Server')

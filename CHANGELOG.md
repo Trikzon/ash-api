@@ -1,4 +1,7 @@
 # Changelog
+## v21.0.3
+- Update build scripts using [MDK Generator](https://github.com/Trikzon/mdk-generator). No functional changes.
+
 ## v21.0.2
 ### v21.0.2-beta
 - Fix ModOptionsScreen crash caused by NeoForge breaking change

@@ -4,24 +4,24 @@ plugins {
 }
 
 neoForge {
-    version = neoforge_version
+    version = project.neoforge_version
 
     validateAccessTransformers = true
 
     def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) {
-        accessTransformers.add(at.absolutePath);
+        accessTransformers.add(at.absolutePath)
     }
 
     parchment {
-        minecraftVersion = parchment_minecraft
-        mappingsVersion = parchment_version
+        minecraftVersion = project.parchment_minecraft_version
+        mappingsVersion = project.parchment_version
     }
 
     runs {
         configureEach {
-            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
-            // Unify the run config names with fabric
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            // Unify the run config names with fabric.
             ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
         }
 
@@ -39,9 +39,15 @@ neoForge {
     }
 
     mods {
-        "${mod_id}" {
+        "${project.mod_id}" {
             sourceSet(sourceSets.main)
         }
+    }
+}
+
+dependencies {
+    if (project.ash_version != "") {
+        implementation "com.diontryban.ash_api:ash_api-neoforge:${project.ash_version}"
     }
 }
 

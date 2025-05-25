@@ -25,7 +25,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -63,18 +62,14 @@ public final class ResourceLoaderFabric extends ResourceLoader {
 
                 @Override
                 public @NotNull CompletableFuture<Void> reload(
-                        @NotNull PreparationBarrier preparationBarrier,
-                        @NotNull ResourceManager resourceManager,
-                        @NotNull ProfilerFiller preparationsProfiler,
-                        @NotNull ProfilerFiller reloadProfiler,
-                        @NotNull Executor backgroundExecutor,
-                        @NotNull Executor gameExecutor
+                        PreparationBarrier preparationBarrier,
+                        ResourceManager resourceManager,
+                        Executor backgroundExecutor,
+                        Executor gameExecutor
                 ) {
                     return reloadListener.reload(
                             preparationBarrier,
                             resourceManager,
-                            preparationsProfiler,
-                            reloadProfiler,
                             backgroundExecutor,
                             gameExecutor
                     );

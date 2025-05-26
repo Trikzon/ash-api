@@ -21,11 +21,12 @@ package com.diontryban.ash_api.resources;
 
 import com.diontryban.ash_api.AshApi;
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraft.server.packs.resources.ReloadableResourceManager;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
@@ -69,9 +70,9 @@ public final class ResourceLoaderNeoForge extends ResourceLoader {
         }
     }
 
-    private void onAddReloadListener(AddReloadListenerEvent event) {
+    private void onAddReloadListener(AddServerReloadListenersEvent event) {
         for (PreparableReloadListener reloadListener : SERVER_RELOAD_LISTENERS) {
-            event.addListener(reloadListener);
+            event.addListener(ResourceLocation.parse(reloadListener.getName()), reloadListener);
         }
     }
 

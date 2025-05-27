@@ -1,4 +1,7 @@
 # Changelog
+## v21.4.1-beta
+- Fix registering client reload listeners on NeoForge.
+
 ## v21.4.0-beta
 - Update to MC 1.21.4.
 
@@ -12,7 +15,7 @@
 - Update to MC 1.21.1.
 
 ## v21.0.4
-- Fix race conditon on NeoForge when registering KeyMappings.
+- Fix race condition on NeoForge when registering KeyMappings.
 
 ## v21.0.3
 - Update build scripts using [MDK Generator](https://github.com/Trikzon/mdk-generator). No functional changes.

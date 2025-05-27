@@ -4,7 +4,7 @@
 [![](http://cf.way2muchnoise.eu/versions/838498.svg)](https://www.curseforge.com/minecraft/mc-mods/ash-api)
 [![](https://maven.diontryban.com/api/badge/latest/releases/com/diontryban/ash_api/ash_api-common?color=40c14a&name=Maven&prefix=v)](https://maven.diontryban.com/#/releases/com/diontryban/ash_api)
 
-An API that provides an abstraction layer between the APIs of the main Minecraft mod loaders: NeoForge and Fabric. It is meant to be used with a multi-loader development environment such as Jared's [MultiLoader-Template](https://github.com/jaredlll08/MultiLoader-Template).
+An API that provides an abstraction layer over the APIs of the main Minecraft mod loaders: NeoForge and Fabric. It is meant to be used with a multi-loader development environment such as Jared's [MultiLoader-Template](https://github.com/jaredlll08/MultiLoader-Template).
 
 Documentation will be available in the near future.
 

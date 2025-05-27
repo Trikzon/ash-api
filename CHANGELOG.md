@@ -1,8 +1,5 @@
 # Changelog
-## v21.4.2-beta
-- Fix registering client reload listeners on NeoForge.
-
-## v21.4.0-beta
+## v21.4.2
 - Update to MC 1.21.4.
 
 ## v21.3.0

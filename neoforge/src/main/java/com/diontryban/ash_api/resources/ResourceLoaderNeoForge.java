@@ -23,18 +23,21 @@ import com.diontryban.ash_api.AshApi;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @ApiStatus.Internal
 public final class ResourceLoaderNeoForge extends ResourceLoader {
-    private static final Queue<PreparableReloadListener> CLIENT_RELOAD_LISTENERS = new ConcurrentLinkedQueue<>();
+    private static final Map<String, Queue<PreparableReloadListener>> CLIENT_RELOAD_LISTENERS = new ConcurrentHashMap<>();
     private static final Queue<PreparableReloadListener> SERVER_RELOAD_LISTENERS = new ConcurrentLinkedQueue<>();
 
     private final PackType type;
@@ -55,22 +58,34 @@ public final class ResourceLoaderNeoForge extends ResourceLoader {
     @Override
     public void registerReloadListener(@NotNull PreparableReloadListener reloadListener) {
         if (type == PackType.CLIENT_RESOURCES) {
-            if (CLIENT_RELOAD_LISTENERS.isEmpty()) {
-                NeoForge.EVENT_BUS.addListener(this::onAddClientReloadListener);
+            var modId = ResourceLocation.parse(reloadListener.getName()).getNamespace();
+
+            if (!CLIENT_RELOAD_LISTENERS.containsKey(modId)) {
+                CLIENT_RELOAD_LISTENERS.put(modId, new ConcurrentLinkedQueue<>());
+
+                var eventBus = ModList.get().getModContainerById(modId).orElseThrow(
+                        () -> new NullPointerException("Mod with id " + modId + " does not exist. Cannot register reload listener.")
+                ).getEventBus();
+
+                if (eventBus != null) {
+                    eventBus.addListener((AddClientReloadListenersEvent event) -> onAddClientReloadListener(event, modId));
+                }
             }
-            CLIENT_RELOAD_LISTENERS.add(reloadListener);
+
+            CLIENT_RELOAD_LISTENERS.get(modId).add(reloadListener);
         } else if (type == PackType.SERVER_DATA) {
             if (SERVER_RELOAD_LISTENERS.isEmpty()) {
                 NeoForge.EVENT_BUS.addListener(this::onAddServerReloadListener);
             }
+
             SERVER_RELOAD_LISTENERS.add(reloadListener);
         } else {
             AshApi.LOG.error("Attempted to register a resource loader of type {}. This is unsupported. Please file an issue.", type);
         }
     }
 
-    private void onAddClientReloadListener(AddClientReloadListenersEvent event) {
-        for (PreparableReloadListener reloadListener : CLIENT_RELOAD_LISTENERS) {
+    private void onAddClientReloadListener(AddClientReloadListenersEvent event, String modId) {
+        for (PreparableReloadListener reloadListener : CLIENT_RELOAD_LISTENERS.get(modId)) {
             event.addListener(ResourceLocation.parse(reloadListener.getName()), reloadListener);
         }
     }

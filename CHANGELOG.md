@@ -1,5 +1,5 @@
 # Changelog
-## v21.5.0-beta
+## v21.5.0
 - Update to MC 1.21.5.
 
 ## v21.4.2

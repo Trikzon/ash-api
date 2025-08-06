@@ -42,8 +42,8 @@ repositories {
         url = 'https://maven.blamejared.com'
     }
     maven {
-        name = 'DionTryban'
-        url = 'https://maven.diontryban.com/releases'
+        name = 'Tryban'
+        url = 'https://maven.tryban.dev/releases'
     }
 }
 
@@ -130,12 +130,12 @@ publishing {
         }
     }
     repositories {
-        if (System.getenv('DIONTRYBAN_MAVEN_USER') && System.getenv('DIONTRYBAN_MAVEN_TOKEN')) {
+        if (System.getenv('TRYBAN_MAVEN_USER') && System.getenv('TRYBAN_MAVEN_TOKEN')) {
             maven {
-                url = "https://maven.diontryban.com/releases"
+                url = "https://maven.tryban.dev/releases"
                 credentials {
-                    username = System.getenv('DIONTRYBAN_MAVEN_USER')
-                    password = System.getenv('DIONTRYBAN_MAVEN_TOKEN')
+                    username = System.getenv('TRYBAN_MAVEN_USER')
+                    password = System.getenv('TRYBAN_MAVEN_TOKEN')
                 }
             }
         }

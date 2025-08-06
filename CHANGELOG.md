@@ -1,4 +1,7 @@
 # Changelog
+## v21.3.1
+- fix: don't hard-crash if a config file can't be read
+
 ## v21.3.0
 - Update to MC 1.21.3.
 

@@ -58,7 +58,7 @@ public final class ModOptionsManager<O extends ModOptions> {
     private O defaultOptions() {
         try {
             return optionsClass.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Config for mod " + modId + " does not have an empty constructor.");
         }
     }
@@ -77,12 +77,12 @@ public final class ModOptionsManager<O extends ModOptions> {
                 var gson = new Gson();
                 options = gson.fromJson(reader, optionsClass);
 
-                if (options.version < defaultOptions().version) {
+                if (options == null || options.version < defaultOptions().version) {
                     AshApi.LOG.info("Found deprecated config file for mod {}. Updating.", modId);
                     options = defaultOptions();
                     write();
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 AshApi.LOG.error("Failed to read {}'s config file.", modId);
                 options = defaultOptions();
                 write();
@@ -99,7 +99,7 @@ public final class ModOptionsManager<O extends ModOptions> {
             var gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(options));
             writer.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             AshApi.LOG.error("Failed to write to config file for mod {}.", modId);
         }
     }

@@ -4,8 +4,8 @@ on:
     tags:
       - "*"
 env:
-  DIONTRYBAN_MAVEN_USER: github
-  DIONTRYBAN_MAVEN_TOKEN: ${{ secrets.DIONTRYBAN_MAVEN_TOKEN }}
+  TRYBAN_MAVEN_USER: github
+  TRYBAN_MAVEN_TOKEN: ${{ secrets.TRYBAN_MAVEN_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest

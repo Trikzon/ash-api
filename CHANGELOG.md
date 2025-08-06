@@ -1,4 +1,7 @@
 # Changelog
+## v21.0.5
+- fix: don't hard-crash if a config file can't be read
+
 ## v21.0.4
 - Fix race conditon on NeoForge when registering KeyMappings.
 

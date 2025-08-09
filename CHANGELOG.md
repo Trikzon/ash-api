@@ -1,4 +1,7 @@
 # Changelog
+## v21.6.0-beta
+- feat: update to MC 1.21.6
+
 ## v21.5.1
 - fix: don't hard-crash if a config file can't be read
 

@@ -41,7 +41,7 @@ public final class ModLoaderNeoForge extends ModLoader {
 
     @Override
     protected boolean isDevelopmentEnvironmentImpl() {
-        return !FMLLoader.isProduction();
+        return !FMLLoader.getCurrent().isProduction();
     }
 
     @Override

@@ -20,7 +20,7 @@
 package com.diontryban.ash_api.resources;
 
 import com.diontryban.ash_api.AshApi;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.neoforged.fml.ModList;
@@ -58,7 +58,7 @@ public final class ResourceLoaderNeoForge extends ResourceLoader {
     @Override
     public void registerReloadListener(@NotNull PreparableReloadListener reloadListener) {
         if (type == PackType.CLIENT_RESOURCES) {
-            var modId = ResourceLocation.parse(reloadListener.getName()).getNamespace();
+            var modId = Identifier.parse(reloadListener.getName()).getNamespace();
 
             if (!CLIENT_RELOAD_LISTENERS.containsKey(modId)) {
                 CLIENT_RELOAD_LISTENERS.put(modId, new ConcurrentLinkedQueue<>());
@@ -86,13 +86,13 @@ public final class ResourceLoaderNeoForge extends ResourceLoader {
 
     private void onAddClientReloadListener(AddClientReloadListenersEvent event, String modId) {
         for (PreparableReloadListener reloadListener : CLIENT_RELOAD_LISTENERS.get(modId)) {
-            event.addListener(ResourceLocation.parse(reloadListener.getName()), reloadListener);
+            event.addListener(Identifier.parse(reloadListener.getName()), reloadListener);
         }
     }
 
     private void onAddServerReloadListener(AddServerReloadListenersEvent event) {
         for (PreparableReloadListener reloadListener : SERVER_RELOAD_LISTENERS) {
-            event.addListener(ResourceLocation.parse(reloadListener.getName()), reloadListener);
+            event.addListener(Identifier.parse(reloadListener.getName()), reloadListener);
         }
     }
 
